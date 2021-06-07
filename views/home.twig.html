@@ -1,37 +1,4 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="description" content=" *** A compléter ***">
-        <meta name="author" content="Joris Verguldezoone | William Kies | Guillaume Grac">
-        <meta name="copyright" content="Joris Verguldezoone | William Kies | Guillaume Grac">
-        <title>Plateforme Network</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    {% block style %}
-   
-    {% endblock %}
-
-    <noscript>Your browser does not support JavaScript!</noscript>
-</head>
-    <body>
-        <header>
-            {% include 'header.twig.html' %}
-        </header>
-        <main>
-            <article>
-                {% block content %}
-                {% endblock %}
-            </article>
-        </main>
-        <footer>
-            {% include 'footer.twig.html' %}
-        </footer>
-    </body>
-
-    {% block script %}
-    <script src="{{ BASE_PATH }}/modules/jquery-3.6.0.min.js"></script>
-
-    {% endblock %}
-</html>
+{% extends "template.twig.html" %}
+{% block content %}
+coucou
+{% endblock %}

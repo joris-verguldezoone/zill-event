@@ -5,6 +5,7 @@ use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controller\Controller;
+use App\Controller\test;
 
 
 session_start();
@@ -28,5 +29,7 @@ $app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 $app->get('/', controller::class . ':home');
+$app->get('/profil', test::class . ':test');
+$app->get('/testcoucou', test::class . ':bonjour');
 
 $app->run();
