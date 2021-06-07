@@ -29,7 +29,5 @@ $app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 $app->get('/', controller::class . ':home');
-$app->get('/profil', test::class . ':test');
-$app->get('/testcoucou', test::class . ':bonjour');
 
 $app->run();
