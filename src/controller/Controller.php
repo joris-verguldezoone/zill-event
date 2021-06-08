@@ -18,6 +18,14 @@ class Controller
         $response->getBody()->write($this->twig->render('home.twig.html'));
         return $response;
     }
+
+    public function about(Request $request, Response $response, $args)
+    {
+        $this->preloadTwig();
+        $response->getBody()->write($this->twig->render('about.twig.html'));
+        return $response;
+    }
+
     /**
      * Charge les fichiers .twig
      */
