@@ -9,26 +9,33 @@
     <meta name="author" content="">
     <meta name="copyright" content="">
     <title>Zill-Event by Lea Zillweger</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     {% block style %}
     <!--- Trumbowyg --->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="{{ BASE_PATH }}"> -->
     {% endblock %}
-
     <noscript>Your browser does not support JavaScript!</noscript>
 </head>
 <body>
 <header>
     {% include 'header.twig.html' %}
 </header>
+
+<span id="icone">
+    <div class="barre"></div>
+    <div class="barre"></div>
+</span>
+
 <main>
     {% block content %}
     {% endblock %}
 </main>
+
 <footer>
     {% include 'footer.twig.html' %}
 </footer>
+<script src="{{BASE_PATH}}/modules/jquery-3.6.0.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
 {% block script %}
 {% endblock %}
 </body>
