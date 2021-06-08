@@ -1,17 +1,26 @@
-<section>
-    <nav>
-        <ul>
-            <li><a href="{{BASE_PATH}}/">ACCUEIL</a></li>
-            <li><a href="{{BASE_PATH}}/about">A PROPOS</a></li>
-            <li><a href="{{BASE_PATH}}/work">ÉVÉNEMENTS</a></li>
-            <li><a href="{{BASE_PATH}}/skills">COMPÉTENCES</a></li>
-            <li><a href="{{BASE_PATH}}/articles">ARTICLES</a></li>
-            <li><a href="{{BASE_PATH}}/work">TÉMOIGNAGES</a></li>
-        </ul>
-    </nav>
+{% block style %}
+<link rel="stylesheet" href="{{BASE_PATH}}/css/header.css">
+{% endblock %}
+
+<section id="headerNavSection">
+    <article>
+        <nav>
+            <ul>
+                <li><a href="{{BASE_PATH}}/"><span class="strikeBar"></span>ACCUEIL</a></li>
+                <li><a href="{{BASE_PATH}}/about"><span class="strikeBar"></span>A PROPOS</a></li>
+                <li><a href="{{BASE_PATH}}/work"><span class="strikeBar"></span>ÉVÉNEMENTS</a></li>
+                <li><a href="{{BASE_PATH}}/skills"><span class="strikeBar"></span>COMPÉTENCES</a></li>
+                <li><a href="{{BASE_PATH}}/articles"><span class="strikeBar"></span>ARTICLES</a></li>
+                <li><a href="{{BASE_PATH}}/work"><span class="strikeBar"></span>TÉMOIGNAGES</a></li>
+            </ul>
+        </nav>
+    </article>
+
+    <article id="headerVideoArticle">
+    </article>
 </section>
 
-<section>
+<section id="headerLinksSection">
     <article><a href="mailto:lea@zill-event.com">lea@zill-event.com</a></article>
     <article><a href="https://www.instagram.com/leazillweger" target="blank">@leazillweger</a></article>
     <article><p>07 69 66 04 49</p></article>
