@@ -8,6 +8,7 @@
     -webkit-font-smoothing: antialiased;
     color: black;
     transition: 0.3s;
+    font-family: 'Yantramanav', sans-serif;
 }
 
 a  {
@@ -26,20 +27,39 @@ body, main, section, article {
 
 html, body {
     width: 100%;
-    height: 200vh;
-    overflow: hidden;
+
 }
 
 body {
     justify-content: space-between;
-    position: relative;
+    position: absolute;
+    transform: translateY(-200vh);
 }
 
 main {
-    height: 100vh;
+    min-height: 100vh;
     flex-grow: 1;
-    transform: translateY(-100vh);
     justify-content: center;
-    background-color: lightblue;
 }
 
+
+
+/*TRANSITION*/
+#transitionArticle {
+    writing-mode: sideways-lr;
+    -webkit-writing-mode: sideways-lr;
+    text-orientation: mixed;
+    line-height: 90%;
+    font-size: 1000%;
+    height: 100vh;
+    background-color: black;
+}
+
+#transitionArticle h1 {
+    padding: 20px;
+    flex-direction: column;
+    text-align: left;
+    color: white;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}

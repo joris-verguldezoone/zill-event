@@ -1,13 +1,26 @@
 {% extends "template.twig.html" %}
 
 {% block style %}
-<link rel="stylesheet" href="{{BASE_PATH}}/css/style.css">
+<link rel="stylesheet" href="{{BASE_PATH}}/css/home.css">
 {% endblock %}
 
 {% block content %}
-<p>Home</p>
+<article id="articleHome">
+
+    <section class="homeSection">
+        <aside>
+            <span>
+            <h1>ZILL'EVENT<br>by Lea Zillweger</h1>
+            </span>
+        </aside>
+    </section>
+
+    <section id="homeVideoSection" class="homeSection">
+    </section>
+</article>
+
+<article id="articleHomeSkills">
+
+</article>
 {% endblock %}
 
-{% block script %}
-<script src="{{BASE_PATH}}/js/nav.js"></script>
-{% endblock %}

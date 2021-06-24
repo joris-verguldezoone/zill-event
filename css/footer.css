@@ -1,0 +1,91 @@
+#show {
+    display: none;
+}
+
+#footer, #section_name, #section_infos, #section_infos div {
+    display: flex;
+    flex-direction: row;
+}
+
+#footer, p {
+    width: 100%;
+}
+
+#footer {
+    font-size: 130%;
+    font-family: 'Archivo', sans-serif;
+    justify-content: left;
+    font-weight: bold;
+    flex-grow: 1;
+    margin-bottom: 2%;
+}
+
+#section_name {
+    width: 25%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#footer h3 {
+    width: 50%;
+}
+
+#section_infos {
+    width: 65%;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+}
+
+#section_infos div {
+    flex-direction: column-reverse;
+}
+
+
+/*MEDIA QUERIES*/
+
+/*Tablet*/
+@media screen and (max-width: 1024px) {
+    #footer {
+        font-size: 100%;
+    }
+
+    #section_name {
+        width: 20%;
+    }
+
+    #section_infos {
+        width: 80%;
+    }
+}
+
+/*Phone*/
+@media screen and (max-width: 640px) {
+    #show {
+        display: block;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    #section_name {
+        padding-left: 10px;
+        font-size: 110%;
+        line-height: 1.2;
+        width: 65%;
+    }
+
+    #footer h3, #show {
+        width: 100%;
+        text-align: left;
+    }
+
+    #section_infos {
+        font-size: 120%;
+        flex-direction: column;
+        text-align: right;
+        justify-content: flex-end;
+    }
+}

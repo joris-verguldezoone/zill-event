@@ -1,12 +1,20 @@
+/*TOGGLE MENU*/
 $('body').on('click', '#icone', function () {
-    if (!($(this).is('.toggleOn'))) {
-        $(this).addClass('toggleOn')
-        $('main').css('transform', 'translateY(0vh)');
-        $('header').css('transform', 'translateY(0vh)');
-    } else {
-        $(this).removeClass('toggleOn')
-        $('main').css('transform', 'translateY(-100vh)');
-        $('header').css('transform', 'translateY(-100vh)');
+    $('body').css('overflow', 'hidden');
+    $('body').css('transform', 'translateY(-100vh)');
+})
 
-    }
+
+/*TRANSITION*/
+$('body').on('click', '#headerNavSection li a', function (e) {
+    e.preventDefault()
+    let id = $(this).attr('id')
+    $('body').css('overflow', 'hidden');
+    $('body').css('transform', 'translateY(0vh)');
+    setTimeout(function () {
+        $('body').css('transform', 'translateY(-100vh)');
+        setTimeout(function () {
+        window.location = id;
+        }, 400)
+    }, 2000)
 })

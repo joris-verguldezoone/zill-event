@@ -1,0 +1,62 @@
+/*BLOC TEXTE ET DESCRIPTION*/
+#articleAboutText {
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+}
+
+#sectionAboutTitle {
+    flex-grow: 1;
+    font-size: 500%;
+    line-height: 90%;
+    text-transform: uppercase;
+    align-self: flex-end;
+}
+
+#sectionAboutDescription {
+    width: 30%;
+    text-align: justify;
+    font-size: 120%;
+    padding-right: 10px;
+}
+
+/*BLOC PHOTOS*/
+#articleAboutPhoto {
+    height: 70vh;
+    margin-bottom: 10vh;
+    position: relative;
+}
+
+#articleAboutPhoto section:nth-child(1), .aboutPhoto {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.aboutPhoto, #overlayAbout {
+    background: white center url("../media/images/photoComingSoon.png") no-repeat;
+    background-size: cover;
+}
+
+#containerAboutPhotoLarge {
+    width: 70%;
+    height: 100%;
+}
+
+#containerAboutPhotoSmall {
+    flex-grow: 1;
+    height: 70%;
+}
+
+/*BULLE INSTAGRAM*/
+#overlayAbout {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 65%;
+    top: 65%;
+    border: 5px solid white;
+    outline: 3px solid #cd2c88;
+}

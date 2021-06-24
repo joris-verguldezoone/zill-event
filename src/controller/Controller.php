@@ -26,6 +26,7 @@ class Controller
         return $response;
     }
 
+
     /**
      * Charge les fichiers .twig
      */

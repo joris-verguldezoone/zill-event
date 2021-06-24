@@ -1,0 +1,39 @@
+#homeVideoSection {
+    background: white center url("../media/images/photoComingSoon.png");
+}
+
+.homeSection {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+
+aside {
+    width: 25%;
+    writing-mode: sideways-lr;
+    -webkit-writing-mode: sideways-lr;
+    text-orientation: mixed;
+    line-height: 90%;
+    font-size: 7vh;
+}
+
+aside span {
+    padding: 20px;
+    flex-direction: column;
+    text-align: left;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+#articleHome {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+#articleHomeSkills {
+    height: 100vh;
+    background-color: red;
+}
