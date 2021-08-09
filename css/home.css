@@ -32,8 +32,3 @@ aside span {
     flex-direction: row;
     height: 100vh;
 }
-
-#articleHomeSkills {
-    height: 100vh;
-    background-color: red;
-}
