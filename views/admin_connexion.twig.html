@@ -1,0 +1,25 @@
+{% extends "template.twig.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{BASE_PATH}}/css/admin_connexion.css">
+{% endblock %}
+{% block content %}
+
+<p>admin_connexion</p>
+
+<form method="POST" action="{{ BASE_PATH }}/admin_connexion" id="form_connexion_admin">
+    <label for="login">Login</label>
+    <input type="text" id="login_admin" name="login">
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password_admin" name="password">
+    <button type="submit"  id="submit_connexion_admin">se connecter</button>
+
+</form>
+
+{% endblock %}
+{% block script %}
+
+    <script src="{{BASE_PATH}}/js/admin_connexion.js"></script>
+
+{% endblock %}

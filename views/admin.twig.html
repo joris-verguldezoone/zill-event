@@ -1,0 +1,102 @@
+{% extends "template.twig.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{BASE_PATH}}/css/admin.css">
+{% endblock %}
+{% block content %}
+<p>admin</p>
+
+    <section>
+        <p>Inscrire un nouvel admin</p>
+        <form method="GET">
+            <label for="login_create_admin">Login</label>
+            <input type="text" id="login_create_admin" name="login_create_admin" class="create_admin">
+
+            <label for="password_create_admin">Mot de passe</label>
+            <input type="password" id="password_create_admin" name="password_create_admin" class="create_admin">
+
+            <label for="confirmation_password_create_admin">Confirmation du mot de passe</label>
+            <input type="password" id="confirmation_password_create_admin" name="confirmation_password_create_admin" class="create_admin">
+
+            <button type="button" onclick="inscription()" id="submit_create_admin">Inscrire</button>
+        </form>
+        <form method="GET">
+            <p>Créer un nouveau post</p>
+        
+            <label for="titre">Titre</label>
+            <input type='text' name='titre' id='titre' placeholder='titre du post..'>
+
+            <label for="description">Description</label>
+            <input type='text' name='description' id='description' placeholder='description du post..'>
+
+            <label for="lien">Lien de partage</label>
+            <input type='text' name='lien' id='lien' placeholder="lien de partage..">
+
+            <input type='button' onclick="newPost()" name='submitNewPost'>
+
+        </form>
+
+        <a href="deconnexion">Deconnexion</a>
+    </section>
+    <table>
+        {% for post in allPost %}
+        <form method="GET">
+        <tr>    
+            <td>
+                {{ post['id'] }}
+            </td>
+            <td>
+                {{ post['id_admin'] }}
+            </td>
+            <td>
+                <input type="text" name="modifyPostTitle" value="{{ post['titre'] }}">
+            </td>
+            <td>
+                <img class="" src="{{ post['lien'] }}" width="50" height="50">
+            </td>
+            <td>
+                <input type="text" name="modifyPostLink" value="{{ post['lien'] }}">
+            </td>
+            <td>
+                <textarea cols="55" name="modifyPostDescription" row="20">{{ post['description'] }}</textarea>
+            </td>
+            <td>
+               {{ post['date'] }}
+            </td>
+            <td>
+                <button type="button" onclick='modifyPost()'>Modifier</button>
+                <input type="hidden" name="hiddenPostID" value="{{ post['id'] }}">
+            </td>
+        </tr>
+    </form>
+   
+{% endfor %}
+<!-- event -->
+<section class="">
+    <h1>Informations Personnelles</h1>
+    
+    <!-- Modify Profil Card -->
+    {% for value in allEvent %}
+    <div class="" style="">
+        <form action="" method="post" enctype="multipart/form-data">
+                <img src="" class="" alt="">
+                <div class="">
+                    <label for="picture">{{ value.type }}</label>
+                    <input type="file" name="picture" id="picture">
+                    <input type="hidden" name="hiddenType" value="{{ value.type }}">
+                    <input type="hidden" name="hiddenId" value="{{ value.id }}">
+                    <input type="submit" name="submitPicture" id="submitPicture" value="Changer">
+                </div>
+            </form>
+        </div>
+        
+    </table>
+    {% endfor %}
+    {% endblock %}
+{% block script %}
+
+    <!-- <script src="{{BASE_PATH}}/js/admin.js"></script> -->
+    <script src="{{BASE_PATH}}/js/admin_connexion.js"></script>
+    <script src="{{BASE_PATH}}/js/post.js"></script>
+
+{% endblock %}
