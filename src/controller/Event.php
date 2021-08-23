@@ -17,19 +17,26 @@ class Event extends Controller
     public function newEventPicutre()
     {
         if (isset($_FILES['picture']) and !empty($_FILES['picture']['name'])) {
-            $lengthMax = 5000000;
+            $lengthMax = 2000000;
             $validExt = array('jpg', 'jpeg', 'gif', 'png');
             var_dump($_FILES);
             var_dump($_POST);
-            if ($_FILES['picture']['size'] <= $lengthMax) {
+            if ($_FILES['picture']['size'] <= $lengthMax && $_FILES['picture']['size'] != 0) {
                 $uploadExt = strtolower(substr(strrchr($_FILES['picture']['name'], '.'), 1));
                 if (in_array($uploadExt, $validExt)) {
-                    $date = date("Y-m-d_H:i:s");
-                    $correctDate = str_replace(':', '-', $date);
+
                     $type_img = $_POST['hiddenType'];
                     $id_picture = $_POST['hiddenId'];
-                    $path = BASE_PATH . '/upload/' . $type_img . "." . $uploadExt;
-                    file_put_contents($_FILES['picture']['tmp_name'], $path);
+                    $path = 'C:/wamp64/www/Project_Pool_3/zill-event/upload/event/' . $type_img . "." . $uploadExt;
+                    // a revoir pendant le transfert et push, 
+                    // utiliser var_dump(getcwd()); pour connaitre son PATH 
+                    $result = move_uploaded_file($_FILES['picture']['tmp_name'], $path);
+                    var_dump($path);
+                    // var_dump($uploadExt);
+
+                    // var_dump($result);
+                    // getcwd();
+                    // var_dump(getcwd());
 
                     $update = new \App\model\Event();
                     $update->newEventPicture($path, $id_picture);
