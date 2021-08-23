@@ -35,8 +35,13 @@
 }
 
 
-.aboutPhoto, #overlayAbout span {
+.aboutPhoto {
     background: white center url("../media/images/photoComingSoon.png") no-repeat;
+    background-size: cover;
+}
+
+#overlayAbout span  {
+    background: white center url("../media/images/instagram.jpg") no-repeat;
     background-size: cover;
 }
 
@@ -97,10 +102,6 @@
     transform: rotate(180deg);
 }
 
-#overlayAbout:hover {
-    transform: scale(0.95);
-}
-
 
 /*MEDIA QUERIES*/
 /*Tablet*/
@@ -130,6 +131,10 @@
 @media screen and (max-width: 640px) {
     #articleAboutPhoto section:nth-child(1) {
         flex-direction: column;
+    }
+
+    #sectionAboutDescription {
+        font-size: 100%;
     }
 
     #containerAboutPhotoLarge {

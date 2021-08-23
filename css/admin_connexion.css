@@ -1,0 +1,39 @@
+#adminConnexion {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+#adminConnexion h1 {
+    font-size: 200%;
+}
+
+
+.formAdmin div {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.formAdmin input, .formAdmin button {
+    width: 100%;
+    padding: 10px;
+    border-style: none;
+}
+
+.formAdmin input {
+    border-bottom: 3px solid black;
+    opacity: 0.5;
+}
+
+.formAdmin input:focus {
+    opacity: 1;
+}
+
+.formAdmin button {
+    background-color: grey;
+    color: white;
+}
+.formAdmin button:hover {
+    background-color: black;
+}

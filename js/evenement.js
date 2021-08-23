@@ -35,7 +35,7 @@ function selectedImg(x) {
     switch (x) {
         case 'seminaire':
             console.log('Oranges are $0.59 a pound.');
-            document.getElementById("photo").style.backgroundImage = 'url("../src/..//images/image1.png")';
+            document.getElementById("picture").style.backgroundImage = 'url("../src/..//images/image1.png")';
             break;
         case 'soiree':
             console.log("xd")
@@ -93,3 +93,4 @@ function unSelectedImg(x) {
 // CLASSIQUE
 
 // DANSE
+

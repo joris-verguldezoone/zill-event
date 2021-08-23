@@ -1,0 +1,17 @@
+#espaceAdminMain, #espaceAdminMain section {
+    padding-top: 10vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#espaceAdminMain section {
+    width: 40%;
+}
+
+#espaceAdminMain h1 {
+    font-size: 150%;
+}
+
+.formAdmin form {
+    width: 100%;
+}s

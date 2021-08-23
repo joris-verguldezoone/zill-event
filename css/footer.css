@@ -42,6 +42,9 @@
     flex-direction: column-reverse;
 }
 
+#footer a:hover {
+    color: grey;
+}
 
 /*MEDIA QUERIES*/
 

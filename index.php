@@ -11,7 +11,7 @@ use App\Controller\test;
 session_start();
 // session_destroy();
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 // session_destroy();
 spl_autoload_register(function ($className) {

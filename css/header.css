@@ -85,6 +85,9 @@ nav li a:hover .strikeBar {
     font-size: 200%;
 }
 
+#headerLinksSection a:hover {
+    color: grey;
+}
 
 /*MEDIA QUERIES*/
 /*Tablet*/
@@ -115,7 +118,7 @@ nav li a:hover .strikeBar {
         flex-direction: column;
         align-items: flex-start;
         padding-left: 5vh;
-        justify-content: space-around;
+        justify-content: center;
         font-size: 120%;
     }
 

@@ -22,10 +22,6 @@ class Controller
 
     public function about(Request $request, Response $response, $args)
     {
-        $this->twig->addGlobal('session', $_SESSION);
-        $this->twig->addGlobal("BASE_PATH", BASE_PATH);
-        $this->twig->addGlobal("HTTP_HOST", HTTP_HOST);
-
         $this->preloadTwig();
         $response->getBody()->write($this->twig->render('about.twig.html'));
         return $response;
@@ -60,7 +56,7 @@ class Controller
         $EventController = new \App\controller\Event();
         $EventController->newEventPicutre();
 
-        if (isset($_SESSION['admin'])) {
+//        if (isset($_SESSION['admin'])) {
 
             $response->getBody()->write(
                 $this->twig->render(
@@ -70,9 +66,9 @@ class Controller
                     ]
                 )
             );
-        } else {
-            $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
-        }
+//        } else {
+//            $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
+//        }
         return $response;
     }
     public function getConnexion(Request $request, Response $response, $args)
@@ -99,11 +95,10 @@ class Controller
             'admin_connexion.twig.html',
             ['BASE_PATH' => BASE_PATH, 'method' => $method, 'login' => $login, 'password' => $password, "HTTP_HOST" => HTTP_HOST]
         ));
-
-
-
         return $response;
     }
+
+
     public function inscription_admin(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
@@ -125,6 +120,7 @@ class Controller
         $response->getBody('bonjour');
         return $response;
     }
+
     public function deconnexion(Request $request, Response $response, $args)
     {
         session_destroy();
@@ -133,6 +129,7 @@ class Controller
 
         return $response;
     }
+
     public function newPost(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
@@ -154,6 +151,7 @@ class Controller
         $response->getBody();
         return $response;
     }
+
     public function blog(Request $request, Response $response, $args)
     {
 
@@ -166,6 +164,7 @@ class Controller
 
         return $response;
     }
+
     public function admin_post_modify(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();

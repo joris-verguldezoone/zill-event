@@ -6,45 +6,69 @@
 
 
 {% block content %}
+<article id="evenement_container">
 
-<section id="evenement_container">
+    <!--<section id="text">
+        <ul>
+            <li onmouseover="selectedImg('seminaire')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>SÉMINAIRE</a></li>
+            <li onmouseover="selectedImg('soiree')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>SOIRÉE D’ENTREPRISE</a></li>
+            <li onmouseover="selectedImg('ceremonie')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CÉRÉMONIE DE REMISE</a></li>
+            <li onmouseover="selectedImg('conference')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CONFÉRENCE</a></li>
+            <li onmouseover="selectedImg('congres')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CONGRÈS</a></li>
+            <li onmouseover="selectedImg('captation')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CAPTATION VIDÉO</a></li>
+            <li onmouseover="selectedImg('hybride')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>HYBRIDE</a></li>
+            <li onmouseover="selectedImg('digital')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>DIGITAL</a></li>
+            <li onmouseover="selectedImg('lancement')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>LANCEMENT PRODUIT</a></li>
+            <li onmouseover="selectedImg('exposition')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>EXPOSITION</a></li>
+            <li onmouseover="selectedImg('assemblee')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>ASSEMBLEE GENERALE</a></li>
+            <li onmouseover="selectedImg('opening')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>OPENING</a></li>
+            <li onmouseover="selectedImg('vernissage')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>VERNISSAGE</a></li>
+            <li onmouseover="selectedImg('sportif')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>SPORTIF</a></li>
+            <li onmouseover="selectedImg('partenaire')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>PARTENAIRE</a></li>
+            <li onmouseover="selectedImg('inauguration')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>INAUGURATION</a></li>
+            <li onmouseover="selectedImg('crazy')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CRAZY BIRTHDAY</a></li>
+            <li onmouseover="selectedImg('concert')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CONCERT</a></li>
+            <li onmouseover="selectedImg('salon')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>SALON</a></li>
+            <li onmouseover="selectedImg('classique')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>CLASSIQUE</a></li>
+            <li onmouseover="selectedImg('danse')" onmouseout="unSelectedImg(this)"><a><span class="strikeBar"></span>DANSE</a></li>
+        </ul>
+    </section>-->
 
+    <section id="text">
+        <ul>
+            <li onmouseover="selectedImg('seminaire')"><a><span class="strikeBar"></span>SÉMINAIRE</a></li>
+            <li onmouseover="selectedImg('soiree')"><a><span class="strikeBar"></span>SOIRÉE D’ENTREPRISE</a></li>
+            <li onmouseover="selectedImg('ceremonie')"><a><span class="strikeBar"></span>CÉRÉMONIE DE REMISE</a></li>
+            <li onmouseover="selectedImg('conference')"><a><span class="strikeBar"></span>CONFÉRENCE</a></li>
+            <li onmouseover="selectedImg('congres')"><a><span class="strikeBar"></span>CONGRÈS</a></li>
+            <li onmouseover="selectedImg('captation')"><a><span class="strikeBar"></span>CAPTATION VIDÉO</a></li>
+            <li onmouseover="selectedImg('hybride')"><a><span class="strikeBar"></span>HYBRIDE</a></li>
+            <li onmouseover="selectedImg('digital')"><a><span class="strikeBar"></span>DIGITAL</a></li>
+            <li onmouseover="selectedImg('lancement')"><a><span class="strikeBar"></span>LANCEMENT PRODUIT</a></li>
+            <li onmouseover="selectedImg('exposition')"><a><span class="strikeBar"></span>EXPOSITION</a></li>
+            <li onmouseover="selectedImg('assemblee')"><a><span class="strikeBar"></span>ASSEMBLEE GENERALE</a></li>
+            <li onmouseover="selectedImg('opening')"><a><span class="strikeBar"></span>OPENING</a></li>
+            <li onmouseover="selectedImg('vernissage')"><a><span class="strikeBar"></span>VERNISSAGE</a></li>
+            <li onmouseover="selectedImg('sportif')"><a><span class="strikeBar"></span>SPORTIF</a></li>
+            <li onmouseover="selectedImg('partenaire')"><a><span class="strikeBar"></span>PARTENAIRE</a></li>
+            <li onmouseover="selectedImg('inauguration')"><a><span class="strikeBar"></span>INAUGURATION</a></li>
+            <li onmouseover="selectedImg('crazy')"><a><span class="strikeBar"></span>CRAZY BIRTHDAY</a></li>
+            <li onmouseover="selectedImg('concert')"><a><span class="strikeBar"></span>CONCERT</a></li>
+            <li onmouseover="selectedImg('salon')"><a><span class="strikeBar"></span>SALON</a></li>
+            <li onmouseover="selectedImg('danse')"><a><span class="strikeBar"></span>DANSE</a></li>
+            <li onmouseover="selectedImg('cocktail')"><a><span class="strikeBar"></span>COCKTAIL</a></li>
+        </ul>
+    </section>
 
-    <div id="text">
-        
-        <p onmouseover="selectedImg('seminaire')" onmouseout="unSelectedImg(this)">SÉMINAIRE</p> 
-        <p onmouseover="selectedImg('soiree')" onmouseout="unSelectedImg(this)">SOIRÉE D’ENTREPRISE</p> 
-        <p onmouseover="selectedImg('ceremonie')" onmouseout="unSelectedImg(this)">CÉRÉMONIE DE REMISE </p>
-        <p onmouseover="selectedImg('conference')" onmouseout="unSelectedImg(this)">CONFÉRENCE </p>
-        <p onmouseover="selectedImg('congres')" onmouseout="unSelectedImg(this)">CONGRÈS</p> 
-        <p onmouseover="selectedImg('captation')" onmouseout="unSelectedImg(this)">CAPTATION VIDÉO</p>
-        <p onmouseover="selectedImg('hybride')" onmouseout="unSelectedImg(this)">HYBRIDE</p> 
-        <p onmouseover="selectedImg('digital')" onmouseout="unSelectedImg(this)">DIGITAL </p>
-        <p onmouseover="selectedImg('lancement')" onmouseout="unSelectedImg(this)">LANCEMENT PRODUIT </p>
-        <p onmouseover="selectedImg('exposition')" onmouseout="unSelectedImg(this)">EXPOSITION</p>
-        <p onmouseover="selectedImg('assemblee')" onmouseout="unSelectedImg(this)">ASSEMBLEE GENERALE </p>
-        <p onmouseover="selectedImg('opening')" onmouseout="unSelectedImg(this)">OPENING</p> 
-        <p onmouseover="selectedImg('vernissage')" onmouseout="unSelectedImg(this)">VERNISSAGE</p>
-        <p onmouseover="selectedImg('sportif')" onmouseout="unSelectedImg(this)">SPORTIF</p>
-        <p onmouseover="selectedImg('partenaire')" onmouseout="unSelectedImg(this)">PARTENAIRE</p>
-        <p onmouseover="selectedImg('inauguration')" onmouseout="unSelectedImg(this)">INAUGURATION</p>
-        <p onmouseover="selectedImg('crazy')" onmouseout="unSelectedImg(this)">CRAZY BIRTHDAY</p>
-        <p onmouseover="selectedImg('concert')" onmouseout="unSelectedImg(this)">CONCERT </p>
-        <p onmouseover="selectedImg('salon')" onmouseout="unSelectedImg(this)">SALON </p>
-        <p onmouseover="selectedImg('classique')" onmouseout="unSelectedImg(this)">CLASSIQUE</p>
-        <p onmouseover="selectedImg('danse')" onmouseout="unSelectedImg(this)">DANSE</p> 
-        
-    </div>
-    <div id="picture">
+    <section id="picture">
         <div id="shownPicture"></div>
-        
-    </div>
-</section>
+    </section>
+
+</article>
 
 {% endblock %}
 
 {% block script %}
-
-    <script src="{{BASE_PATH}}/js/evenement.js"></script>
-
+<!--<script src="{{BASE_PATH}}/js/evenement.js"></script>-->
+<script src="{{BASE_PATH}}/js/event.js"></script>
 {% endblock %}

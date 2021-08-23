@@ -5,21 +5,31 @@
 {% endblock %}
 {% block content %}
 
-<p>admin_connexion</p>
-
-<form method="POST" action="{{ BASE_PATH }}/admin_connexion" id="form_connexion_admin">
-    <label for="login">Login</label>
-    <input type="text" id="login_admin" name="login">
-
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password_admin" name="password">
-    <button type="submit"  id="submit_connexion_admin">se connecter</button>
-
-</form>
-
+<article id="adminConnexion" class="formAdmin">
+    <section>
+        <div>
+            <h1>Connexion Admin</h1>
+        </div>
+    </section>
+    <section>
+        <form method="POST" action="{{ BASE_PATH }}/admin_connexion" id="form_connexion_admin">
+            <div>
+                <label for="login_admin">Login</label>
+                <input type="text" id="login_admin" name="login">
+            </div>
+            <div>
+                <label for="password_admin">Mot de passe</label>
+                <input type="password" id="password_admin" name="password">
+            </div>
+            <div>
+                <button type="submit" id="submit_connexion_admin">se connecter</button>
+            </div>
+        </form>
+    </section>
+</article>
 {% endblock %}
 {% block script %}
 
-    <script src="{{BASE_PATH}}/js/admin_connexion.js"></script>
+<script src="{{BASE_PATH}}/js/admin_connexion.js"></script>
 
 {% endblock %}
