@@ -56,19 +56,19 @@ class Controller
         $EventController = new \App\controller\Event();
         $EventController->newEventPicutre();
 
-//        if (isset($_SESSION['admin'])) {
+        //        if (isset($_SESSION['admin'])) {
 
-            $response->getBody()->write(
-                $this->twig->render(
-                    'admin.twig.html',
-                    [
-                        'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'allPost' => $allPost, 'allEvent' => $allEvent
-                    ]
-                )
-            );
-//        } else {
-//            $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
-//        }
+        $response->getBody()->write(
+            $this->twig->render(
+                'admin.twig.html',
+                [
+                    'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'allPost' => $allPost, 'allEvent' => $allEvent
+                ]
+            )
+        );
+        //        } else {
+        //            $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
+        //        }
         return $response;
     }
     public function getConnexion(Request $request, Response $response, $args)
@@ -156,12 +156,18 @@ class Controller
     {
 
         $model = new \App\model\Post();
-        $result = $model->selectAllByOrder('post', 'date', 'DESC');
-        var_dump($result);
+        $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
+        var_dump($allPost);
 
         $this->preloadTwig();
-        $response->getBody()->write($this->twig->render('blog.twig.html'));
-
+        $response->getBody()->write(
+            $this->twig->render(
+                'blog.twig.html',
+                [
+                    'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'allPost' => $allPost
+                ]
+            )
+        );
         return $response;
     }
 
@@ -171,8 +177,8 @@ class Controller
         if ($method == 'GET') {
 
             $params = (array)$request->getParsedBody();
-            var_dump($_GET);
-            var_dump($params);
+            // var_dump($_GET);
+            // var_dump($params);
             $model = new \App\model\Post();
 
 
@@ -188,7 +194,30 @@ class Controller
             $lien = "";
         }
 
-        var_dump($_POST);
+        // var_dump($_POST);
+        $this->preloadTwig();
+        $response->getBody()->write($this->twig->render('admin.twig.html'));
+
+        return $response;
+    }
+    public function deletePost(Request $request, Response $response, $args)
+    {
+        $method = $request->getMethod();
+        if ($method == 'get') {
+
+            $params = (array)$request->getParsedBody();
+            // var_dump($_GET);
+            // var_dump($params);
+            $model = new \App\model\Post();
+
+
+            $id = $this->secure($_GET['id']);
+            $model->deleteWhere('post', 'id', $id);
+        } else {
+            $id = "";
+        }
+
+        // var_dump($_POST);
         $this->preloadTwig();
         $response->getBody()->write($this->twig->render('admin.twig.html'));
 

@@ -14,4 +14,77 @@
 
 .formAdmin form {
     width: 100%;
-}s
+}
+.small_event_image{
+    height:120px;
+    width:130px;
+}
+/* deconnexion button */
+
+
+.deco_button {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
+.deco_button{
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+ .td_large{
+    min-width:80px;
+ }
+
+
+ .deco_button:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+/* input 'changer' */
+
+.input_changer {background-image: linear-gradient(to right, #606c88 0%, #3f4c6b  51%, #606c88  100%)}
+.input_changer {
+   margin: 10px;
+   padding: 8px 25px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .input_changer:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+/* input file */
+/* 
+.input_file {background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3  51%, #8e9eab  100%)}
+.input_file{
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .input_file:hover {
+   background-position: right center;
+   color: #fff;
+   text-decoration: none;
+ } */

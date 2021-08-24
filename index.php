@@ -47,5 +47,5 @@ $app->map(["GET", "POST"], '/deconnexion', controller::class . ':deconnexion');
 $app->post('/newPost', controller::class . ':newPost');
 $app->get('/blog', controller::class . ':blog');
 $app->get('/admin_post_modify', controller::class . ':admin_post_modify');
-
+$app->get('/deletePost', controller::class . ':deletePost');
 $app->run();

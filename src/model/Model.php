@@ -107,4 +107,11 @@ class Model
     // SELECT
     // UPDATE 
     // DELETE 
+    public function deleteWhere($table, $col, $value)
+    {
+        $sql = "DELETE FROM $table WHERE $col = :value";
+        $result = $this->pdo->prepare($sql);
+        $result->bindValue(":value", $value, \PDO::PARAM_INT);
+        $result->execute();
+    }
 }

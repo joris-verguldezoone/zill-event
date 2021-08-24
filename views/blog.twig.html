@@ -5,6 +5,18 @@
 {% endblock %}
 {% block content %}
 
+{% for value in allPost %}
+<section class="post_container">
+    <div class="post_div">
+        <p class="titre">{{value.titre}}</p>
+        <p class="contenu">{{value.description}}</p>
+         {{value.lien|raw }}
+        <p class="date">{{value.date}}</p>
+    </div>
+</section>
+
+{% endfor %}
+
 {% endblock %}
 {% block script %}
 

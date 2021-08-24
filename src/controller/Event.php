@@ -27,7 +27,7 @@ class Event extends Controller
 
                     $type_img = $_POST['hiddenType'];
                     $id_picture = $_POST['hiddenId'];
-                    $path = 'C:/wamp64/www/Project_Pool_3/zill-event/upload/event/' . $type_img . "." . $uploadExt;
+                    $path = 'upload/event/' . $type_img . "." . $uploadExt;
                     // a revoir pendant le transfert et push, 
                     // utiliser var_dump(getcwd()); pour connaitre son PATH 
                     $result = move_uploaded_file($_FILES['picture']['tmp_name'], $path);

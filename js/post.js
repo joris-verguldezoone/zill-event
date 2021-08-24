@@ -38,3 +38,18 @@ function modifyPost() {
     })
 
 }
+function deletePost() {
+    let id = document.getElementById('hiddenPostID_del').value
+    console.log(id)
+    $.ajax({
+        url: 'deletePost',
+        dateType: 'json',
+        type: 'get',
+        data: { id: id }
+
+    }).done(function (data) {
+        console.log(data)
+    }).fail(function (doto) {
+        console.log('deletePost failure')
+    })
+}
