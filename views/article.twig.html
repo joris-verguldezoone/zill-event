@@ -1,0 +1,30 @@
+{% extends "template.twig.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{BASE_PATH}}/css/article.css">
+{% endblock %}
+
+{% block content %}
+<article id="articleMain">
+
+    <section class="containerDataArticle">
+        <div>
+            <p class="titreArticle">{{selectedPost.titre}}</p>
+            <p>{{selectedPost.date}}</p>
+        </div>
+        <div>
+                <p class="descriptionArticle">{{selectedPost.description}}</p>
+                <a class="lienExterneArticle" href="{{selectedPost.lien}}">lien externe</a>
+        </div>
+    </section>
+    <section class="containerImageArticle">
+            <img class="imageArticle" src="media/posts/samplePost.jpg">
+    </section>
+</article>
+
+{% endblock %}
+{% block script %}
+
+<!--<script src="{{BASE_PATH}}/js/blog.js"></script>-->
+
+{% endblock %}

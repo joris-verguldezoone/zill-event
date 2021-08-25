@@ -33,6 +33,14 @@ class Controller
         $response->getBody()->write($this->twig->render('skills.twig.html'));
         return $response;
     }
+
+    public function testimonies(Request $request, Response $response, $args)
+    {
+        $this->preloadTwig();
+        $response->getBody()->write($this->twig->render('testimonies.twig.html'));
+        return $response;
+    }
+
     public function event(Request $request, Response $response, $args)
     {
 
@@ -40,12 +48,14 @@ class Controller
         $response->getBody()->write($this->twig->render('evenement.twig.html'));
         return $response;
     }
+
     public function request_path(Request $request, Response $response, $args)
     {
         $this->preloadTwig();
         $response->getBody()->write(__DIR__);
         return $response;
     }
+
     public function admin(Request $request, Response $response, $args)
     {
         $model = new \App\model\Post();
@@ -56,21 +66,22 @@ class Controller
         $EventController = new \App\controller\Event();
         $EventController->newEventPicutre();
 
-        //        if (isset($_SESSION['admin'])) {
-
-        $response->getBody()->write(
-            $this->twig->render(
-                'admin.twig.html',
-                [
-                    'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'allPost' => $allPost, 'allEvent' => $allEvent
-                ]
-            )
-        );
-        //        } else {
-        //            $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
-        //        }
+        if (isset($_SESSION['admin'])) {
+            $login = $_SESSION['admin']['user_name'];
+            $response->getBody()->write(
+                $this->twig->render(
+                    'admin.twig.html',
+                    [
+                        'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'allPost' => $allPost, 'allEvent' => $allEvent, 'login' => $login
+                    ]
+                )
+            );
+        } else {
+            $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
+        }
         return $response;
     }
+
     public function getConnexion(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
@@ -107,8 +118,8 @@ class Controller
             $login = $_GET['login'];
             $confirm_password = $_GET['confirm_password'];
             $password = $_GET['password'];
-            var_dump($_GET);
-            var_dump($login, $password);
+//            var_dump($_GET);
+//            var_dump($login, $password);
             $admin = new \App\controller\Inscription();
             $result = $admin->inscription($login, $password, $confirm_password);
         } else {
@@ -124,10 +135,7 @@ class Controller
     public function deconnexion(Request $request, Response $response, $args)
     {
         session_destroy();
-        $this->preloadTwig();
-        $response->getBody()->write($this->twig->render('home.twig.html'));
-
-        return $response;
+        $this->redirect('home');
     }
 
     public function newPost(Request $request, Response $response, $args)
@@ -157,7 +165,7 @@ class Controller
 
         $model = new \App\model\Post();
         $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
-        var_dump($allPost);
+//        var_dump($allPost);
 
         $this->preloadTwig();
         $response->getBody()->write(
@@ -170,6 +178,25 @@ class Controller
         );
         return $response;
     }
+
+
+    public function article(Request $request, Response $response, $args) //récupère les data d'un article grâce à l'id dans l'url
+    {
+        $model = new \App\model\Post();
+        $selectedPost = $model->selectPostById('post', $_GET['id']);
+//        var_dump($selectedPost);
+        $this->preloadTwig();
+        if (!empty($selectedPost)) {
+            $response->getBody()->write($this->twig->render('article.twig.html',
+                [
+                    'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'selectedPost' => $selectedPost
+                ]));
+        } else {
+            $this->redirect('blog'); //si id non existant, redirection vers le blog
+        }
+        return $response;
+    }
+
 
     public function admin_post_modify(Request $request, Response $response, $args)
     {
@@ -200,6 +227,7 @@ class Controller
 
         return $response;
     }
+
     public function deletePost(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
@@ -223,7 +251,6 @@ class Controller
 
         return $response;
     }
-
 
 
     /**

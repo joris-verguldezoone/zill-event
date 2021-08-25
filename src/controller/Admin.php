@@ -25,7 +25,7 @@ class Admin extends Controller
             if ($fetch) {
                 $passwordSql = $modelConnexion->passwordVerifySql($login);
 
-                var_dump($password, $passwordSql);
+//                var_dump($password, $passwordSql);
                 if (password_verify($password, $passwordSql['password'])) {
                     $_SESSION['connected'] = true;
                     $utilisateur = $modelConnexion->selectAllWhere('admin', 'user_name', $login);

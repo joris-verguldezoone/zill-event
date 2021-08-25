@@ -48,12 +48,18 @@
 
 /*Phone*/
 @media screen and (max-width: 640px) {
-    #text {
-        font-size: 150%;
+
+    #evenement_container section, #text ul {
+        width: 100%;
+        height: 50vh;
     }
 
-    #text li a:hover {
-        background-color: white;
+    #text {
+        overflow-y: auto;
+    }
+
+    #text ul {
+        font-size: 100%;
     }
 
     #text li a .strikeBar {
@@ -62,14 +68,5 @@
 
     #evenement_container {
        flex-direction: column-reverse;
-    }
-
-    #evenement_container section {
-        width: 100%;
-        height: 50vh;
-    }
-
-    #text {
-       overflow: auto;
     }
 }

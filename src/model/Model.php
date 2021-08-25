@@ -31,13 +31,21 @@ class Model
         return $fetch;
     }
 
+    public function selectPostById($table, $id)
+    {
+        $query = $this->pdo->prepare('SELECT *, DATE_FORMAT(date, "%d %m %Y") as date FROM ' . $table . ' WHERE id = ' . $id);
+        $query->execute();
+        return $query->fetch();
+    }
+
+
     public function selectAllByOrder($table, $value, $order)
     {
         $query = $this->pdo->prepare('SELECT * FROM ' . $table . ' ORDER BY ' . $value . " " . $order);
         $query->execute();
-
         return $query->fetchAll();
     }
+
     public function selectAll($table, $column, $value)
     {
         $query = $this->pdo->prepare('SELECT * FROM ' . $table . ' WHERE ' . $column . ' = ?');

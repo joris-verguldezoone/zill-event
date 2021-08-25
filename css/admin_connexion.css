@@ -15,24 +15,25 @@
     padding-bottom: 20px;
 }
 
-.formAdmin input, .formAdmin button {
+.formAdmin input[type='text'], input[type='password'], .formAdmin button, .formAdmin textarea {
     width: 100%;
     padding: 10px;
     border-style: none;
 }
 
-.formAdmin input {
+.formAdmin input[type='text'], input[type='password'],  .formAdmin textarea {
     border-bottom: 3px solid black;
     opacity: 0.5;
 }
 
-.formAdmin input:focus {
+.formAdmin input:focus, .formAdmin textarea:focus {
     opacity: 1;
 }
 
 .formAdmin button {
     background-color: grey;
     color: white;
+    margin-bottom: 5px;
 }
 .formAdmin button:hover {
     background-color: black;

@@ -1,0 +1,75 @@
+#articleMain {
+    min-height: 100vh;
+    font-size: 150%;
+}
+
+
+#articleMain section {
+    height: 50vh;
+}
+
+.containerDataArticle {
+    background-color: #fd553b;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerImageArticle {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerImageArticle img {
+    width: 100%;
+}
+
+.titreArticle {
+    font-size: 20vh;
+    text-transform: uppercase;
+    line-height: 90%;
+}
+.containerDataArticle div {
+    display: flex;
+    flex-direction: column;
+}
+.containerDataArticle div:nth-child(1) {
+    justify-content: flex-end;
+}
+
+.containerDataArticle div:nth-child(2) {
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+
+.descriptionArticle, .lienExterneArticle {
+    width: 50%;
+    padding-bottom: 5px;
+}
+
+.lienExterneArticle:hover {
+    color: white;
+}
+
+
+/*Phone*/
+@media screen and (max-width: 640px) {
+   .containerDataArticle {
+       flex-direction: column;
+       justify-content: flex-end;
+   }
+
+    .titreArticle {
+        font-size: 300%;
+    }
+
+    .containerDataArticle div, .descriptionArticle, .lienExterneArticle {
+        font-size: 90%;
+        width: 100%;
+        display: flex;
+        justify-content: left;
+    }
+}

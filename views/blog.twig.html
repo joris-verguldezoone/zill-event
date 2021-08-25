@@ -5,21 +5,21 @@
 {% endblock %}
 {% block content %}
 
-{% for value in allPost %}
-<section class="post_container">
-    <div class="post_div">
-        <p class="titre">{{value.titre}}</p>
-        <p class="contenu">{{value.description}}</p>
-         {{value.lien|raw }}
-        <p class="date">{{value.date}}</p>
-    </div>
-</section>
+<article id="blogArticleMain">
 
-{% endfor %}
+    {% for value in allPost %}
+    <section class="containerPost">
+        <img class="imagePost" src="media/posts/samplePost.jpg">   <!--Remplacer la source par l'image associée à l'article-->
+
+        <p class="titrePost">{{value.titre}}</p>
+        <a href="{{BASE_PATH}}/article?id={{value.id}}" target="blank" class="overlayPost">{{value.titre}}<br>Voir + </a> <!--Lien vers la page "article" avec l'id de l'article en paramètre-->
+    </section>
+    {% endfor %}
+</article>
 
 {% endblock %}
 {% block script %}
 
-    <script src="{{BASE_PATH}}/js/blog.js"></script>
+<!--<script src="{{BASE_PATH}}/js/blog.js"></script>-->
 
 {% endblock %}

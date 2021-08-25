@@ -8,12 +8,22 @@
 {% block content %}
 <article id="espaceAdminMain">
 
-    <section>
-        <h1>Espace d'administration</h1>
-        <a class='deco_button' href="deconnexion">Deconnexion</a>
+    <section id="titleSectionAdmin">
+        <h1>ESPACE D'ADMINISTRATION</h1>
+        <h2>@{{login}}</h2>
+        <a class='navAdmin' href="deconnexion">Déconnexion</a>
     </section>
 
-    <section id="adminInscriptionSection" class="formAdmin">
+    <section>
+        <ul>
+            <li class="navAdmin" id="creerAdminButton">Créer un admin</li>
+            <li class="navAdmin" id="creerArticleButton">Créer un article</li>
+            <li class="navAdmin" id="modifierArticlesButton">Modifier les articles</li>
+            <li class="navAdmin" id="modifierImageEventButton">Modifier les images de la page événement</li>
+        </ul>
+    </section>
+
+    <section id="adminInscriptionSection" class="formAdmin adminSection">
         <h2>Inscrire un nouvel admin</h2>
         <form method="GET">
             <div>
@@ -35,7 +45,7 @@
         </form>
     </section>
 
-    <section class="formAdmin">
+    <section id="postCreationSection" class="formAdmin adminSection">
         <h2>Créer un nouveau post</h2>
         <form method="GET">
             <div>
@@ -44,7 +54,7 @@
             </div>
             <div>
                 <label for="description">Description</label>
-                <input type='text' name='description' id='description' placeholder='description du post..'>
+                <textarea name='description' id='description'>Description</textarea>
             </div>
             <div>
                 <label for="lien">Lien de partage</label>
@@ -56,90 +66,51 @@
         </form>
     </section>
 
-    <section>
-        <h2>Modifier les articles</h2>
-        <table>
-            <thead>
-            <th>id_post</th>
-            <th>id_admin</th>
-            <th>Titre</th>
-            <th>Lien</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Modifier</th>
-            </thead>
-            {% for post in allPost %}
-            <tbody>
-            <form method="GET">
-                <tr>
-                    <td>
-                        {{ post['id'] }}
-                    </td>
-                    <td>
-                        {{ post['id_admin'] }}
-                    </td>
-                    <td>
-                        <input type="text" name="modifyPostTitle" value="{{ post['titre'] }}">
-                    </td>
-                    <td>
-                        <input type="text" name="modifyPostLink" value="{{ post['lien'] }}">
-                    </td>
-                    <td>
-                        <textarea cols="35" name="modifyPostDescription" row="20">{{ post['description'] }}</textarea>
-                    </td>
-                    <td class="td_large">
-                        {{ post['date'] }}
-                    </td>
-                    <td>
-                        <button  type="button"class='input_changer' onclick='modifyPost()'>Modifier</button>
-                        <input type="hidden" name="hiddenPostID" value="{{ post['id'] }}">
-                    </td>
-                    <td>
-                        <button type="button" class="input_suppr" onclick='deletePost()'>Supprimer</button>
-                        <input type="hidden" id="hiddenPostID_del" value="{{ post['id'] }}">
-
-                    </td>
-                </tr>
-            </form>
-            {% endfor %}
-            </tbody>
-        </table>
-    </section>
-    <!-- event -->
-
-    <section>
-        <h1>Images événements</h1>
-        <!-- Modify Profil Card -->
-        <table>
-        {% for value in allEvent %}
-        <div class="">
-            <form action="" method="post" enctype="multipart/form-data">
-                <div class="">
-                    <tr>
-                        <td>
-                            <label for="picture">{{ value.type }}</label>
-                        </td>
-                        <td>
-                            <input class='' type="file" name="picture" id="picture">
-
-                        </td>
-                        <td>
-
-                            <img src="{{ value.path }}" class="small_event_image" alt="event img">
-                        </td>
-                        <td>
-                            <input type="submit" class='input_changer' name="submitPicture" id="submitPicture" value="Changer">
-                            <input type="hidden" name="hiddenType" value="{{ value.type }}">
-                            <input type="hidden" name="hiddenId" value="{{ value.id }}">
-
-                        </td>
-                    </tr>
-                    
-                </div>
-            </form>
-        </div>
+    <section id="postModifSection" class="adminSection">
+        <h2>Modifier les articles publiés</h2>
+        {% for post in allPost %}
+        <form method="GET" class="formAdmin postCardAdmin">
+            <p>Publié le {{ post['date'] }} par @{{post['id_admin']}}</p>
+            <input type="text" name="modifyPostTitle" placeholder="titre" value="{{ post['titre'] }}">
+            <input type="text" name="modifyPostLink" placeholder="lien" value="{{ post['lien'] }}">
+            <textarea cols="35" name="modifyPostDescription" row="20">{{ post['description'] }}</textarea>
+            <button type="button" class='input_changer' onclick='modifyPost()'>Modifier</button>
+            <input type="hidden" name="hiddenPostID" value="{{ post['id'] }}">
+            <button type="button" class="input_suppr" onclick='deletePost()'>Supprimer</button>
+            <input type="hidden" id="hiddenPostID_del" value="{{ post['id'] }}">
+        </form>
         {% endfor %}
-    </table>
+    </section>
+
+    <section id="eventModifSection" class="adminSection formAdmin">
+        <h1>Images des événements</h1>
+        <table class="tableResponsive">
+            {% for value in allEvent %}
+            <tr class="eachEventLine">
+                <form action="" method="post" enctype="multipart/form-data" >
+                    <td>
+                        <label for="picture">{{ value.type }}</label>
+                    </td>
+                    <td>
+                        <input type="file" name="picture" id="picture">
+
+                    </td>
+                    <td>
+                        <img src="{{ value.path }}" class="small_event_image" alt="event img">
+                    </td>
+                    <td>
+                        <button type="submit" class='input_changer' name="submitPicture" id="submitPicture"
+                                value="Changer">Changer</button>
+                        <input type="hidden" name="hiddenType" value="{{ value.type }}">
+                        <input type="hidden" name="hiddenId" value="{{ value.id }}">
+
+                    </td>
+                </form>
+            </tr>
+
+
+            {% endfor %}
+        </table>
     </section>
 
 </article>
