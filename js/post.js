@@ -2,14 +2,27 @@ function newPost() {
     let title = document.getElementById("titre").value
     let description = document.getElementById('description').value
     let lien = document.getElementById('lien').value
-
+    // let photo = document.getElementById('photo').value
+    // let video = document.getElementById('video').value
+    let type = document.getElementById('type_selected').value
     console.log(title, description, lien)
+
+    // if (photo !== null) {
+    //     type = photo
+    //     console.log("grrrrrrrrrrrrrrrr")
+    // }
+    // else if (video !== null) {
+    //     type = video
+    //     console.log("nion")
+    // }
+
+    console.log(type)
 
     $.ajax({
         url: 'newPost',
         dateType: 'json',
         type: 'post',
-        data: { title: title, description: description, lien: lien }
+        data: { title: title, description: description, lien: lien, type: type }
 
     }).done(function (data) {
         console.log(data)

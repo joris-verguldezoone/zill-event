@@ -8,9 +8,9 @@ require_once('model.php');
 class Post extends Model
 {
 
-    public function createNewPost($titre, $description, $lien)
+    public function createNewPost($titre, $description, $lien, $type)
     {
-        $id_admin = $_SESSION['admin']['id'];
+        $admin_login = $_SESSION['admin']['user_name'];
         $tz_object = new \DateTimeZone('Europe/Paris');
 
         $date = new \DateTime();
@@ -18,13 +18,14 @@ class Post extends Model
         $date = $date->format('Y-m-d H:i:s');
 
 
-        $sql = 'INSERT INTO post (titre, description, lien, id_admin, date) VALUES (:titre, :description, :lien, :id_admin, :date)';
+        $sql = 'INSERT INTO post (titre, description, lien, admin, date, type) VALUES (:titre, :description, :lien, :admin_login, :date, :type)';
         $result = $this->pdo->prepare($sql);
         $result->bindValue(':titre', $titre, \PDO::PARAM_STR);
         $result->bindValue(':description', $description, \PDO::PARAM_STR);
         $result->bindValue(':lien', $lien, \PDO::PARAM_STR);
-        $result->bindValue(':id_admin', $id_admin, \PDO::PARAM_INT);
+        $result->bindValue(':admin_login', $admin_login, \PDO::PARAM_STR);
         $result->bindValue(':date', $date, \PDO::PARAM_STR);
+        $result->bindValue(':type', $type, \PDO::PARAM_STR);
 
         $result->execute();
     }

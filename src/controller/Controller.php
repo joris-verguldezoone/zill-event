@@ -65,6 +65,7 @@ class Controller
         // var_dump($allEvent);
         $EventController = new \App\controller\Event();
         $EventController->newEventPicutre();
+        $allUser = $model->selectAllByOrder('admin', 'id', 'ASC');
 
         if (isset($_SESSION['admin'])) {
             $login = $_SESSION['admin']['user_name'];
@@ -72,7 +73,8 @@ class Controller
                 $this->twig->render(
                     'admin.twig.html',
                     [
-                        'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'allPost' => $allPost, 'allEvent' => $allEvent, 'login' => $login
+                        'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH,
+                        'allPost' => $allPost, 'allEvent' => $allEvent, 'login' => $login, 'allUser' => $allUser
                     ]
                 )
             );
@@ -118,8 +120,8 @@ class Controller
             $login = $_GET['login'];
             $confirm_password = $_GET['confirm_password'];
             $password = $_GET['password'];
-//            var_dump($_GET);
-//            var_dump($login, $password);
+            //            var_dump($_GET);
+            //            var_dump($login, $password);
             $admin = new \App\controller\Inscription();
             $result = $admin->inscription($login, $password, $confirm_password);
         } else {
@@ -144,13 +146,14 @@ class Controller
         if ($method == 'POST') {
 
             $params = (array)$request->getParsedBody();
-
+            var_dump($_POST);
             $title = $this->secure($_POST['title']);
             $description = $this->secure($_POST['description']);
             $lien = $this->secure($_POST['lien']);
+            $type = $this->secure($_POST['type']);
 
             $newPostController = new \App\model\Post();
-            $newPostController->createNewPost($title, $description, $lien);
+            $newPostController->createNewPost($title, $description, $lien, $type);
         } else {
             $title = "";
             $description = "";
@@ -165,7 +168,7 @@ class Controller
 
         $model = new \App\model\Post();
         $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
-//        var_dump($allPost);
+        //        var_dump($allPost);
 
         $this->preloadTwig();
         $response->getBody()->write(
@@ -184,13 +187,17 @@ class Controller
     {
         $model = new \App\model\Post();
         $selectedPost = $model->selectPostById('post', $_GET['id']);
-//        var_dump($selectedPost);
+        //        var_dump($selectedPost);
+        $suggestion = $model->selectRandLimit3('post'); // permet de récuperer des suggestion , 3, et aléatoires 
         $this->preloadTwig();
+        var_dump($suggestion);
         if (!empty($selectedPost)) {
-            $response->getBody()->write($this->twig->render('article.twig.html',
+            $response->getBody()->write($this->twig->render(
+                'article.twig.html',
                 [
-                    'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'selectedPost' => $selectedPost
-                ]));
+                    'HTTP_HOST' => HTTP_HOST, 'BASE_PATH' => BASE_PATH, 'selectedPost' => $selectedPost, 'suggestion' => $suggestion
+                ]
+            ));
         } else {
             $this->redirect('blog'); //si id non existant, redirection vers le blog
         }

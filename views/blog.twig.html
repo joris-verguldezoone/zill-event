@@ -9,7 +9,15 @@
 
     {% for value in allPost %}
     <section class="containerPost">
-        <img class="imagePost" src="media/posts/samplePost.jpg">   <!--Remplacer la source par l'image associée à l'article-->
+    {% if value.type == "photo" %}
+    <!-- <section class="containerPost"> -->
+            <img class="imagePost" src="{{value.lien}}">   
+        {% elseif value.type == "video" %}
+        <!-- <section class="containerPost_video"> -->
+    
+        {{value.lien|raw}}
+        {% endif %}
+
 
         <p class="titrePost">{{value.titre}}</p>
         <a href="{{BASE_PATH}}/article?id={{value.id}}" target="blank" class="overlayPost">{{value.titre}}<br>Voir + </a> <!--Lien vers la page "article" avec l'id de l'article en paramètre-->

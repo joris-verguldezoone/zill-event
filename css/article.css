@@ -12,6 +12,7 @@
     background-color: #fd553b;
     display: flex;
     flex-direction: row;
+    overflow:auto;
 }
 
 .containerImageArticle {
@@ -54,6 +55,16 @@
     color: white;
 }
 
+
+/* SECTION SUGGESTION A MODIFIER */
+#suggestion_section{
+    display: flex;
+    flex-direction: row;
+}
+.suggestion_img{
+    width:560px;
+    height:315px;
+}
 
 /*Phone*/
 @media screen and (max-width: 640px) {

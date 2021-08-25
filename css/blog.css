@@ -16,6 +16,15 @@
     overflow: hidden;
     cursor: pointer;
 }
+/* .containerPost_video { // je te laisse regler l'affichage, j'ai pas trop d'idée
+    width: 50%;
+    height: 50vh;
+    min-height: 50vh;
+    max-height: 50vh;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+} */
 
 
 .titrePost, .overlayPost {

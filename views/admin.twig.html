@@ -18,6 +18,7 @@
         <ul>
             <li class="navAdmin" id="creerAdminButton">Créer un admin</li>
             <li class="navAdmin" id="creerArticleButton">Créer un article</li>
+            <li class="navAdmin" id="modifierAdminButton">Modifier les utilisateurs</li>
             <li class="navAdmin" id="modifierArticlesButton">Modifier les articles</li>
             <li class="navAdmin" id="modifierImageEventButton">Modifier les images de la page événement</li>
         </ul>
@@ -58,12 +59,53 @@
             </div>
             <div>
                 <label for="lien">Lien de partage</label>
-                <input type='text' name='lien' id='lien' placeholder="lien de partage..">
+                <input type='text' name='lien' id='lien' placeholder="url photo libre de droit ou lien d'intégration youtube">
             </div>
+            <div>
+                <select name="type" id="type_selected">
+                    <option>--choisir--</option>
+                    <option value="photo">photo</option>
+                    <option value='video'>video</option>
+                </select>
+            </div>
+            
             <div>
                 <button type='button' onclick="newPost()" name='submitNewPost'>Créer</button>
             </div>
         </form>
+    </section>
+
+    <section id="adminModifSection" class="adminSection">
+        <h1>Modifier les admin</h1>
+        <table class="tableResponsive">
+            <thead>
+                <th>user_name</th>
+                <th>password</th>
+            </thead>
+            {% for value in allUser %}
+            <tr class="eachEventLine">
+                <form action="" method="post">
+                    <td>
+                        <input type="text" name="user_name_modif" id="user_name_modif" value='{{ value.user_name }}'>
+                    </td>
+                    <td>
+                        <input type="text" name="password_modif" id="password_modif" value="{{ value.password }}">
+                    </td>
+                    <td>
+                        <button type="submit" class='input_changer' 
+                            name="submitPicture" id="submitPicture" value="Changer">Changer
+                        </button>
+
+                        <input type="hidden" name="hiddenType" value="{{ value.type }}">
+                        <input type="hidden" name="hiddenId" value="{{ value.id }}">
+
+                    </td>
+                </form>
+            </tr>
+
+
+            {% endfor %}
+        </table>
     </section>
 
     <section id="postModifSection" class="adminSection">

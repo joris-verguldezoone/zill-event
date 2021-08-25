@@ -37,6 +37,14 @@ class Model
         $query->execute();
         return $query->fetch();
     }
+    public function selectRandLimit3($table)
+    {
+        $sql = "SELECT * FROM $table ORDER BY RAND() LIMIT 3";
+        $result = $this->pdo->prepare($sql);
+        $result->execute();
+        $fetch = $result->fetchAll();
+        return $fetch;
+    }
 
 
     public function selectAllByOrder($table, $value, $order)

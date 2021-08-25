@@ -18,29 +18,31 @@ $(document).ready(function () {
                 break;
             case 'modifierImageEventButton':
                 $('#eventModifSection').show()
+            case 'modifierAdminButton':
+                $('#adminModifSection').show()
                 break;
         }
     });
 
 
-// function connexion() {
-//     let login = document.getElementById('login_admin').value
-//     let password = document.getElementById('password_admin').value
-//     console.log(login)
-//     console.log(password)
-//     $.ajax({
-//         url: 'connexion_admin',
-//         dateType: 'json',
-//         type: 'post',
-//         data: { login: login, password: password }
+    // function connexion() {
+    //     let login = document.getElementById('login_admin').value
+    //     let password = document.getElementById('password_admin').value
+    //     console.log(login)
+    //     console.log(password)
+    //     $.ajax({
+    //         url: 'connexion_admin',
+    //         dateType: 'json',
+    //         type: 'post',
+    //         data: { login: login, password: password }
 
-//     }).done(function (data) {
-//         console.log('good')
-//         console.log(data)
-//     }).fail(function (doto) {
-//         console.log('connexion_admin failure')
-//     })
-// }
+    //     }).done(function (data) {
+    //         console.log('good')
+    //         console.log(data)
+    //     }).fail(function (doto) {
+    //         console.log('connexion_admin failure')
+    //     })
+    // }
     function inscription() {
         let login = document.getElementById('login_create_admin').value
         let password = document.getElementById('password_create_admin').value
@@ -51,7 +53,7 @@ $(document).ready(function () {
             url: 'inscription_admin',
             dateType: 'json',
             type: 'get',
-            data: {login: login, password: password, confirm_password}
+            data: { login: login, password: password, confirm_password }
 
         }).done(function (data) {
             console.log('good')
