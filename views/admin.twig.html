@@ -77,35 +77,25 @@
 
     <section id="adminModifSection" class="adminSection">
         <h1>Modifier les admin</h1>
-        <table class="tableResponsive">
-            <thead>
-                <th>user_name</th>
-                <th>password</th>
-            </thead>
+        
+        {% set i = 0%}
             {% for value in allUser %}
-            <tr class="eachEventLine">
-                <form action="" method="post">
-                    <td>
-                        <input type="text" name="user_name_modif" id="user_name_modif" value='{{ value.user_name }}'>
-                    </td>
-                    <td>
-                        <input type="text" name="password_modif" id="password_modif" value="{{ value.password }}">
-                    </td>
-                    <td>
-                        <button type="submit" class='input_changer' 
-                            name="submitPicture" id="submitPicture" value="Changer">Changer
+            {% set i = i + 1 %}
+            {{ i }}
+                <form class="modifUser" action="" method="GET">
+                        <input type="hidden" name="hiddenId" id="hiddenId{{i}}" value="{{ value.id }}">
+                        <input type="text" name="user_name_modif" id="user_name_modif{{i}}" value='{{ value.user_name }}'>
+                        <input type="password" name="password_modif" id="password_modif{{i}}" value="{{ value.password }}">
+                        <button onclick="modifAdmin('user_name_modif{{i}}','password_modif{{i}}', 'hiddenId{{i}}')" type="button" class='input_changer' 
+                            name="submitPicture" id="submitPicture{{i}}" value="Changer">Changer
                         </button>
 
-                        <input type="hidden" name="hiddenType" value="{{ value.type }}">
-                        <input type="hidden" name="hiddenId" value="{{ value.id }}">
 
-                    </td>
                 </form>
-            </tr>
 
 
             {% endfor %}
-        </table>
+            <div id="admin_response"></div>
     </section>
 
     <section id="postModifSection" class="adminSection">

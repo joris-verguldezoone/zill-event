@@ -67,6 +67,7 @@ class Controller
         $EventController->newEventPicutre();
         $allUser = $model->selectAllByOrder('admin', 'id', 'ASC');
 
+
         if (isset($_SESSION['admin'])) {
             $login = $_SESSION['admin']['user_name'];
             $response->getBody()->write(
@@ -256,6 +257,53 @@ class Controller
         $this->preloadTwig();
         $response->getBody()->write($this->twig->render('admin.twig.html'));
 
+        return $response;
+    }
+    public function modifAdmin(Request $request, Response $response, $args)
+    {
+        $method = $request->getMethod();
+        if ($method == 'GET') {
+
+            $params = (array)$request->getParsedBody();
+            // var_dump($_GET);
+            // var_dump($params);
+            $model = new \App\model\Admin();
+
+
+            $user_name = $this->secure($_GET['user_name']);
+            $password = $this->secure($_GET['password']);
+            $id = $this->secure($_GET['id']);
+            $user_name_len = strlen($user_name);
+            $password_len = strlen($password);
+            $error = "";
+            if ($user_name_len > 1) {
+                if ($password_len > 4) {
+                    $password = password_hash($password, PASSWORD_BCRYPT);
+
+                    $model->updateTwoValue('admin', 'user_name', 'password', 'id', $user_name, $password, $id);
+
+                    $succes = "vos données ont été modifiées avec succes";
+                    $this->preloadTwig();
+
+                    $response->getBody()->write($succes);
+                    return $response;
+                } else {
+                    $error = 'Le mdp doit etre supérieur a 4 caractère <br /> ';
+                }
+            } else {
+                $error = $error . 'Le login doit dépasser 1 caractères';
+            }
+        }
+        if ($error !== "") {
+            $id = "";
+            $user_name = "";
+            $password = "";
+            $this->preloadTwig();
+            $response->getBody()->write($error);
+            return $response;
+        }
+
+        // var_dump($_POST);
         return $response;
     }
 

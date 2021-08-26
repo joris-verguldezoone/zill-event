@@ -38,3 +38,41 @@
 .formAdmin button:hover {
     background-color: black;
 }
+
+/* ctrl+C crtl+V */
+
+.modifUser div {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.modifUser input[type='text'], input[type='password'], .modifUser button, .modifUser textarea {
+    width: 100%;
+    padding: 10px;
+    border-style: none;
+}
+
+.modifUser input[type='text'], input[type='password'],  .modifUser textarea {
+    border-bottom: 3px solid black;
+    opacity: 0.5;
+}
+
+.modifUser input:focus, .modifUser textarea:focus {
+    opacity: 1;
+}
+
+.modifUser button {
+    background-color: grey;
+    color: white;
+    margin-bottom: 5px;
+}
+.modifUser button:hover {
+    background-color: black;
+}
+/* admin_response */
+#admin_response{
+    height:50px;
+    width:100%;
+    padding:10px;
+    
+}

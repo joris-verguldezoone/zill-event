@@ -50,4 +50,5 @@ $app->get('/blog', controller::class . ':blog');
 $app->get('/article', controller::class . ':article');
 $app->get('/admin_post_modify', controller::class . ':admin_post_modify');
 $app->get('/deletePost', controller::class . ':deletePost');
+$app->get('/modifAdmin', controller::class . ':modifAdmin');
 $app->run();

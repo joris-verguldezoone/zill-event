@@ -117,6 +117,15 @@ class Model
 
         $query->execute();
     }
+    public function updateTwoValue($table, $column1, $column2, $column3, $value1, $value2, $value3)
+    {
+        $query = $this->pdo->prepare('UPDATE ' . $table . ' SET ' . $column1 . ' = :value1 , ' . $column2 . ' = :value2 WHERE ' . $column3 . ' = :value3');
+        $query->bindValue(':value1', $value1);
+        $query->bindValue(':value2', $value2);
+        $query->bindValue(':value3', $value3);
+
+        $query->execute();
+    }
     // UNRELEATED
 
     // INSERT
