@@ -36,6 +36,7 @@ header {
 
 #icone:hover .barre {
     transform: translateY(0);
+    /*border: 2px solid grey;*/
 }
 
 /*NAV SECTION*/
@@ -94,7 +95,7 @@ nav li a:hover .strikeBar {
 /*Tablet*/
 @media screen and (max-width: 1024px) {
     #headerNavSection {
-        font-size: 7vh;
+        font-size: 5vh;
     }
 
     #headerLinksSection {

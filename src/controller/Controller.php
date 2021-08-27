@@ -167,7 +167,7 @@ class Controller
     public function blog(Request $request, Response $response, $args)
     {
 
-        $model = new \App\model\Post();
+       /* $model = new \App\model\Post();
         $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
         //        var_dump($allPost);
 
@@ -180,7 +180,7 @@ class Controller
                 ]
             )
         );
-        return $response;
+        return $response;*/
     }
 
 
