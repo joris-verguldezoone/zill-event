@@ -31,8 +31,8 @@ class Inscription extends Controller
 
                             $cryptedpass = password_hash($password, PASSWORD_BCRYPT); // CRYPTED 
                             $modelInscription->insert($login, $cryptedpass);
-
-//                            echo 'GGWP'; // GG WP
+                            return "Inscription réussie";
+                            //                            echo 'GGWP'; // GG WP
 
                         } else $errorLog = "<p>Confirmation du mot de passe incorrect</p>";
                     } else $errorLog = "<p>Identifiant déjà utilisé</p>";
@@ -41,6 +41,6 @@ class Inscription extends Controller
         } else {
             $errorLog = "<p>Champs non remplis</p>";
         }
-        echo $errorLog;
+        return $errorLog;
     }
 }

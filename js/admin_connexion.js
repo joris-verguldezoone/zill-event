@@ -53,6 +53,8 @@ function inscription() {
     let confirm_password = document.getElementById('confirmation_password_create_admin').value
     console.log(login)
     console.log(password)
+    $('#admin_response_inscription').hide()
+
     $.ajax({
         url: 'inscription_admin',
         dateType: 'json',
@@ -61,17 +63,20 @@ function inscription() {
 
     }).done(function (data) {
         console.log('good')
+        $('#admin_response_inscription').show()
+        $('#admin_response_inscription').empty()
+        $('#admin_response_inscription').append('<p>' + data + '</p>')
     }).fail(function (doto) {
         console.log('inscription_admin failure')
     })
 }
-function modifAdmin(log, pass, id_admin) {
+function modifAdmin(log, pass, id_admin, response) {
     console.log(log, pass)
     let user_name = $('#' + log).val()
     let password = $('#' + pass).val()
     let id = $('#' + id_admin).val();
-    $('.admin_response').hide()
-    console.log(user_name, password, id)
+    $('#' + response).hide()
+    console.log(user_name, password, id, response)
 
     $.ajax({
         url: 'modifAdmin',
@@ -82,11 +87,81 @@ function modifAdmin(log, pass, id_admin) {
     }).done(function (data) {
         console.log(data)
         console.log('good')
-        $('#admin_response').show()
-        $('#admin_response').empty()
-        $('#admin_response').append('<p>' + data + '</p>')
+        $('#' + response).show()
+        $('#' + response).empty()
+        $('#' + response).append('<p>' + data + '</p>')
+        $('#' + user_name).append('<p>' + data + '</p>')
 
     }).fail(function (doto) {
         console.log('modifAdmin failure')
+    })
+}
+function deleteAdmin(id_admin, response) {
+    let id_delete = $('#' + id_admin).val();
+    $('#' + response).hide()
+    // console.log(id, response)
+
+    $.ajax({
+        url: 'deleteAdmin',
+        dateType: 'json',
+        type: 'GET',
+        data: { id_delete: id_delete }
+
+    }).done(function (data) {
+        console.log(data)
+        console.log('good')
+        $('#' + response).show()
+        $('#' + response).empty()
+        $('#' + response).append('<p>' + data + '</p>')
+
+    }).fail(function (doto) {
+        console.log('deleteAdmin failure')
+    })
+}
+function modifyArticle(title, lien, description, id, response) {
+    let id_val = $('#' + id).val();
+    let titre_val = $('#' + title).val();
+    let description_val = $('#' + description).val();
+    let lien_val = $('#' + lien).val();
+    $('#' + response).hide()
+    // console.log(id, response)
+
+    $.ajax({
+        url: 'modifyArticle',
+        dateType: 'json',
+        type: 'GET',
+        data: { id: id_val, titre: titre_val, description: description_val, lien: lien_val }
+
+    }).done(function (data) {
+        console.log(data)
+        console.log('good')
+        $('#' + response).show()
+        $('#' + response).empty()
+        $('#' + response).append('<p>' + data + '</p>')
+
+    }).fail(function (doto) {
+        console.log('modifyArticle failure')
+    })
+}
+function deleteArticle(id_article, response) {
+    let id_delete = $('#' + id_article).val();
+    $('#' + response).hide()
+    // console.log(id, response)
+
+    $.ajax({
+        url: 'deleteArticle',
+        dateType: 'json',
+        type: 'GET',
+        data: { id_delete: id_delete }
+
+    }).done(function (data) {
+        console.log(data)
+        console.log('good')
+        $('#' + response).show()
+        $('#' + response).empty()
+        $('#' + response).append('<p>' + data + '</p>')
+
+    }).fail(function (doto) {
+        console.log('deleteAdmin failure')
     })
 }

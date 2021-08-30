@@ -120,8 +120,8 @@ class Controller
     public function inscription_admin(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
+        $result = "";
         if ($method == 'GET') {
-            $params = (array)$request->getParsedBody();
             $login = $_GET['login'];
             $confirm_password = $_GET['confirm_password'];
             $password = $_GET['password'];
@@ -135,7 +135,9 @@ class Controller
         }
 
         $this->preloadTwig();
-        $response->getBody('bonjour');
+
+
+        $response->getBody()->write($result);
         return $response;
     }
 
@@ -148,6 +150,7 @@ class Controller
     public function newPost(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
+
         if ($method == 'POST') {
 
             $params = (array)$request->getParsedBody();
@@ -157,14 +160,18 @@ class Controller
             $lien = preg_replace('/(<a\b[^><]*)>/i', '$1 sandbox">', $_POST['lien']);
             $type = $this->secure($_POST['type']);
 
+
             $newPostController = new \App\model\Post();
             $newPostController->createNewPost($title, $description, $lien, $type);
+
+            $succes = "Post crée avec succès";
+            $response->getBody()->write($succes);
         } else {
             $title = "";
             $description = "";
             $lien = "";
+            $response->getBody()->write("Le post n'a pas pu être enregistré");
         }
-        $response->getBody();
         return $response;
     }
 
@@ -216,7 +223,7 @@ class Controller
     }
 
 
-    public function admin_post_modify(Request $request, Response $response, $args)
+    public function modifyArticle(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
         if ($method == 'GET') {
@@ -232,7 +239,7 @@ class Controller
             $lien = $this->secure($_GET['lien']);
             $id = $this->secure($_GET['id']);
             $model->updatePost($titre, $description, $lien, $id);
-            var_dump($titre, $description, $lien);
+            // var_dump($titre, $description, $lien);
         } else {
             $titre = "";
             $description = "";
@@ -241,7 +248,7 @@ class Controller
 
         // var_dump($_POST);
         $this->preloadTwig();
-        $response->getBody()->write($this->twig->render('admin.twig.html'));
+        $response->getBody()->write('Article modifié avec succès');
 
         return $response;
     }
@@ -292,7 +299,7 @@ class Controller
 
                     $model->updateTwoValue('admin', 'user_name', 'password', 'id', $user_name, $password, $id);
 
-                    $succes = "vos données ont été modifiées avec succes";
+                    $succes = "Les données ont été modifiées avec succes";
                     $this->preloadTwig();
 
                     $response->getBody()->write($succes);
@@ -314,6 +321,28 @@ class Controller
         }
 
         // var_dump($_POST);
+        return $response;
+    }
+    public function deleteAdmin(Request $request, Response $response, $args)
+    {
+
+        $model = new \App\model\Admin();
+        $id = $this->secure($_GET['id_delete']);
+        $result = $model->deleteWhere('admin', 'id', $id);
+        $this->preloadTwig();
+
+        $response->getBody()->write('Admin supprimé avec succès');
+        return $response;
+    }
+    public function deleteArticle(Request $request, Response $response, $args)
+    {
+
+        $model = new \App\model\Admin();
+        $id = $this->secure($_GET['id_delete']);
+        $result = $model->deleteWhere('post', 'id', $id);
+        $this->preloadTwig();
+
+        $response->getBody()->write('Article supprimé avec succès');
         return $response;
     }
 
