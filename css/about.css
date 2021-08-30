@@ -1,12 +1,21 @@
 /*BLOC TEXTE ET DESCRIPTION*/
+
+#articleAboutMain {
+    display: flex;
+    height: 140vh;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 #articleAboutText {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    height: 70vh;
+    justify-content: space-between;
 }
 
 #sectionAboutTitle {
-    flex-grow: 1;
+    padding-top: 10vh;
     font-size:  500%;
     line-height: 90%;
     text-transform: uppercase;
@@ -107,11 +116,10 @@
 /*Tablet*/
 @media screen and (max-width: 1024px) {
     #articleAboutText {
-        margin-top: 15vh;
         flex-direction: column;
     }
     #articleAboutText section {
-        margin-bottom: 5vh;
+        /*margin-bottom: 5vh;*/
         width: 100%;
     }
 

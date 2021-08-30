@@ -94,7 +94,7 @@ nav li a:hover .strikeBar {
 /*Tablet*/
 @media screen and (max-width: 1024px) {
     #headerNavSection {
-        font-size: 7vh;
+		font-size: 5vh;
     }
 
     #headerLinksSection {

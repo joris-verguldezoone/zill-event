@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-require_once('controller.php');
+//require_once('controller.php');
 
 
 class Admin extends Controller
@@ -15,8 +15,8 @@ class Admin extends Controller
 
         if (!empty($login) && !empty($password)) { // il faut remplir les champs sinon $errorLog
 
-            $ControllerConnexion = new \App\Controller\Admin();
-            $modelConnexion = new \App\Model\Admin();
+            $ControllerConnexion = new \App\controller\Admin();
+            $modelConnexion = new \App\model\Admin();
 
             $login = $ControllerConnexion->secure($login);
             $password = $ControllerConnexion->secure($password);

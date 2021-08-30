@@ -7,7 +7,7 @@ class Model
     protected $pdo;
     public function __construct() // PDO
     {
-        $pdo = new \PDO('mysql:host=localhost;dbname=zill-event;charset=utf8', 'root', '');
+        $pdo = new \PDO('mysql:host=localhost:3306;dbname=joris-verguldezoone_zill-event;charset=utf8', 'joris', 'huong-may');
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $this->pdo = $pdo;
@@ -140,3 +140,5 @@ class Model
         $result->execute();
     }
 }
+//$model = new Model();
+//var_dump($model);

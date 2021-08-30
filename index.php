@@ -1,5 +1,8 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
+//var_dump(__DIR__);
+
+
 
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -8,6 +11,8 @@ use App\Controller\Controller;
 use App\Controller\test;
 // use App\Controller\event;
 
+require_once('src/controller/Controller.php');
+require_once("src/model/Model.php");
 session_start();
 // session_destroy();
 

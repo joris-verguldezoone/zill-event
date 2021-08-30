@@ -13,9 +13,7 @@
     <!-- <section class="containerPost"> -->
             <img class="imagePost" src="{{value.lien}}">   
         {% elseif value.type == "video" %}
-        <!-- <section class="containerPost_video"> -->
-    
-        {{value.lien|raw}}
+		{{value.lien|raw}}
         {% endif %}
 
 
@@ -28,6 +26,6 @@
 {% endblock %}
 {% block script %}
 
-<!--<script src="{{BASE_PATH}}/js/blog.js"></script>-->
+<script src="{{BASE_PATH}}/js/blog.js"></script>
 
 {% endblock %}

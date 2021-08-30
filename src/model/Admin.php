@@ -2,7 +2,7 @@
 
 namespace App\model;
 
-require_once('model.php');
+
 
 class Admin extends Model
 {

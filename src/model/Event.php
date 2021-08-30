@@ -2,7 +2,6 @@
 
 namespace App\model;
 
-require_once('model.php');
 
 class Event extends Model
 {

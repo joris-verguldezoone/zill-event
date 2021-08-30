@@ -6,8 +6,8 @@ class Inscription extends Controller
 {
     public function inscription($login, $password, $confirm_password)
     {
-        $modelInscription = new \App\Model\Inscription();
-        $controllerInscription = new \App\Controller\Inscription();
+        $modelInscription = new \App\model\Inscription();
+        $controllerInscription = new \App\controller\Inscription();
 
         $this->login = $controllerInscription->secure($login);
         $this->password = $controllerInscription->secure($password);        //securisé    

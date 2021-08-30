@@ -2,8 +2,6 @@
 
 namespace App\model;
 
-require_once('model.php');
-
 
 class Post extends Model
 {
@@ -41,3 +39,5 @@ class Post extends Model
         $result->execute();
     }
 }
+
+

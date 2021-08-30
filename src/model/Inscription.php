@@ -2,7 +2,6 @@
 
 namespace App\model {
 
-    require_once("Model.php");
 
     class Inscription extends Model
     {
