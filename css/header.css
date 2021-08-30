@@ -36,6 +36,7 @@ header {
 
 #icone:hover .barre {
     transform: translateY(0);
+    /*border: 2px solid grey;*/
 }
 
 /*NAV SECTION*/

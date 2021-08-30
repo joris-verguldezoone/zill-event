@@ -33,9 +33,9 @@ class Controller
         $response->getBody()->write($this->twig->render('skills.twig.html'));
         return $response;
     }
-	
 
-	
+
+
     public function testimonies(Request $request, Response $response, $args)
     {
         $this->preloadTwig();
@@ -52,7 +52,7 @@ class Controller
     }
 
 
-	
+
     public function request_path(Request $request, Response $response, $args)
     {
         $this->preloadTwig();
@@ -154,7 +154,7 @@ class Controller
             //var_dump($_POST);
             $title = $this->secure($_POST['title']);
             $description = $this->secure($_POST['description']);
-			$lien = preg_replace('/(<a\b[^><]*)>/i', '$1 sandbox">', $_POST['lien']);
+            $lien = preg_replace('/(<a\b[^><]*)>/i', '$1 sandbox">', $_POST['lien']);
             $type = $this->secure($_POST['type']);
 
             $newPostController = new \App\model\Post();
@@ -167,19 +167,19 @@ class Controller
         $response->getBody();
         return $response;
     }
-	
-	
-	
 
-  		public function blog(Request $request, Response $response, $args)
+
+
+
+    public function blog(Request $request, Response $response, $args)
     {
 
 
         $model = new \App\model\Post();
-		
-		//var_dump($model);
+
+        //var_dump($model);
         $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
-               // var_dump($allPost);
+        // var_dump($allPost);
 
         $this->preloadTwig();
         $response->getBody()->write(
@@ -191,7 +191,7 @@ class Controller
             )
         );
         return $response;
-    }  
+    }
 
 
     public function article(Request $request, Response $response, $args) //récupère les data d'un article grâce à l'id dans l'url
@@ -201,7 +201,7 @@ class Controller
         //        var_dump($selectedPost);
         $suggestion = $model->selectRandLimit3('post'); // permet de récuperer des suggestion , 3, et aléatoires 
         $this->preloadTwig();
-      //  var_dump($suggestion);
+        //  var_dump($suggestion);
         if (!empty($selectedPost)) {
             $response->getBody()->write($this->twig->render(
                 'article.twig.html',
@@ -347,7 +347,6 @@ class Controller
         header('location: ' . $path);
         exit();
     }
-	
 }
 
 //$post = new Controller();
