@@ -16,15 +16,6 @@
     overflow: hidden;
     cursor: pointer;
 }
-/* .containerPost_video { // je te laisse regler l'affichage, j'ai pas trop d'idée
-    width: 50%;
-    height: 50vh;
-    min-height: 50vh;
-    max-height: 50vh;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-} */
 
 
 .titrePost, .overlayPost {
@@ -36,7 +27,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    font-size: 500%;
+    font-size: 400%;
     word-break: break-word;
     z-index: 1;
     text-transform: uppercase;
@@ -44,15 +35,32 @@
 
 .overlayPost {
     z-index: 2;
-    background-color: #fd553b;
+    background-color: black;
     transition: 0.5s ease-in-out;
     transform: translateY(+500px);
+    color: white;
+    opacity: 0.8;
 }
 
 .containerPost:hover .overlayPost {
     transform: translateY(0px);
 }
 
+.imagePost {
+    width: auto;
+    height: 100%;
+    opacity: 0.8;
+    filter: saturate(0%);
+}
+
+
+/*MEDIA QUERIES*/
+/*Tablet*/
+@media screen and (max-width: 1024px) {
+    .overlayPost {
+        font-size: 200%;
+    }
+}
 
 /*Phone*/
 @media screen and (max-width: 640px) {
@@ -62,5 +70,10 @@
 
     .containerPost {
         width: 100%;
+    }
+
+    .overlayPost {
+        justify-content: center;
+        align-items: center;
     }
 }
