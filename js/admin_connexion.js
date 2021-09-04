@@ -18,6 +18,7 @@ $(document).ready(function () {
                 break;
             case 'modifierImageEventButton':
                 $('#eventModifSection').show()
+                break;
             case 'modifierAdminButton':
                 $('#adminModifSection').show()
                 break;
@@ -62,10 +63,17 @@ function inscription() {
         data: { login: login, password: password, confirm_password }
 
     }).done(function (data) {
+        let result = data
         console.log('good')
         $('#admin_response_inscription').show()
         $('#admin_response_inscription').empty()
-        $('#admin_response_inscription').append('<p>' + data + '</p>')
+        if (data === "success") {
+            $('#login_create_admin').val('')
+            $('#password_create_admin').val('')
+            $('#confirmation_password_create_admin').val('')
+            result = 'Inscription réussie !'
+        }
+        $('#admin_response_inscription').append('<p>' + result + '</p>')
     }).fail(function (doto) {
         console.log('inscription_admin failure')
     })
@@ -98,6 +106,7 @@ function modifAdmin(log, pass, id_admin, response) {
 }
 function deleteAdmin(id_admin, response) {
     let id_delete = $('#' + id_admin).val();
+    // console.log(id_delete)
     $('#' + response).hide()
     // console.log(id, response)
 
@@ -110,14 +119,16 @@ function deleteAdmin(id_admin, response) {
     }).done(function (data) {
         console.log(data)
         console.log('good')
+        $('.modifUser[value='+ id_delete +']').hide()
         $('#' + response).show()
-        $('#' + response).empty()
+        $('.affichageReponseFormulaire').empty()
         $('#' + response).append('<p>' + data + '</p>')
 
     }).fail(function (doto) {
         console.log('deleteAdmin failure')
     })
 }
+
 function modifyArticle(title, lien, description, id, response) {
     let id_val = $('#' + id).val();
     let titre_val = $('#' + title).val();
@@ -136,7 +147,7 @@ function modifyArticle(title, lien, description, id, response) {
         console.log(data)
         console.log('good')
         $('#' + response).show()
-        $('#' + response).empty()
+        $('.affichageReponseFormulaire').empty()
         $('#' + response).append('<p>' + data + '</p>')
 
     }).fail(function (doto) {
@@ -158,10 +169,13 @@ function deleteArticle(id_article, response) {
         console.log(data)
         console.log('good')
         $('#' + response).show()
-        $('#' + response).empty()
+        $('.affichageReponseFormulaire').empty()
         $('#' + response).append('<p>' + data + '</p>')
+        $('.postCardAdmin[value='+ id_delete +']').hide()
 
     }).fail(function (doto) {
         console.log('deleteAdmin failure')
     })
 }
+
+

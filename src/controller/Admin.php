@@ -9,8 +9,6 @@ class Admin extends Controller
 {
     public function connexion($login, $password)
     {
-        $login = $login;
-        $password = $password;
         $errorLog = null;
 
         if (!empty($login) && !empty($password)) { // il faut remplir les champs sinon $errorLog

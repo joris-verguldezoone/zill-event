@@ -57,6 +57,7 @@ $app->get('/modifyArticle', controller::class . ':modifyArticle');
 $app->get('/deletePost', controller::class . ':deletePost');
 $app->get('/modifAdmin', controller::class . ':modifAdmin');
 $app->get('/deleteArticle', controller::class . ':deleteArticle');
+$app->get('/deleteAdmin', controller::class . ':deleteAdmin');
 
 
 $app->run();

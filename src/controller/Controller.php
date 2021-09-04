@@ -35,7 +35,6 @@ class Controller
     }
 
 
-
     public function testimonies(Request $request, Response $response, $args)
     {
         $this->preloadTwig();
@@ -50,7 +49,6 @@ class Controller
         $response->getBody()->write($this->twig->render('evenement.twig.html'));
         return $response;
     }
-
 
 
     public function request_path(Request $request, Response $response, $args)
@@ -120,7 +118,7 @@ class Controller
     public function inscription_admin(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
-        $result = "";
+        $result = '';
         if ($method == 'GET') {
             $login = $_GET['login'];
             $confirm_password = $_GET['confirm_password'];
@@ -135,8 +133,6 @@ class Controller
         }
 
         $this->preloadTwig();
-
-
         $response->getBody()->write($result);
         return $response;
     }
@@ -162,26 +158,20 @@ class Controller
 
 
             $newPostController = new \App\model\Post();
-            $newPostController->createNewPost($title, $description, $lien, $type);
-
-            $succes = "Post crée avec succès";
-            $response->getBody()->write($succes);
+            $result = $newPostController->createNewPost($title, $description, $lien, $type);
         } else {
             $title = "";
             $description = "";
             $lien = "";
-            $response->getBody()->write("Le post n'a pas pu être enregistré");
         }
+        $this->preloadTwig();
+        $response->getBody()->write($result);
         return $response;
     }
 
 
-
-
     public function blog(Request $request, Response $response, $args)
     {
-
-
         $model = new \App\model\Post();
 
         //var_dump($model);
@@ -276,6 +266,7 @@ class Controller
 
         return $response;
     }
+
     public function modifAdmin(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
@@ -293,22 +284,20 @@ class Controller
             $user_name_len = strlen($user_name);
             $password_len = strlen($password);
             $error = "";
-            if ($user_name_len > 1) {
+            if ($user_name_len > 2) {
                 if ($password_len > 4) {
                     $password = password_hash($password, PASSWORD_BCRYPT);
-
                     $model->updateTwoValue('admin', 'user_name', 'password', 'id', $user_name, $password, $id);
-
-                    $succes = "Les données ont été modifiées avec succes";
+                    $succes = "Les données ont été modifiées avec succès";
                     $this->preloadTwig();
 
                     $response->getBody()->write($succes);
                     return $response;
                 } else {
-                    $error = 'Le mdp doit etre supérieur a 4 caractère <br /> ';
+                    $error = '<p>Le mdp doit comporter 4 caractères minimum</p>';
                 }
             } else {
-                $error = $error . 'Le login doit dépasser 1 caractères';
+                $error = $error . '<p>Le login doit comporter 2 caractères minimum</p>';
             }
         }
         if ($error !== "") {
@@ -323,17 +312,19 @@ class Controller
         // var_dump($_POST);
         return $response;
     }
+
     public function deleteAdmin(Request $request, Response $response, $args)
     {
+
 
         $model = new \App\model\Admin();
         $id = $this->secure($_GET['id_delete']);
         $result = $model->deleteWhere('admin', 'id', $id);
         $this->preloadTwig();
-
-        $response->getBody()->write('Admin supprimé avec succès');
+        $response->getBody()->write('Admin supprimé !');
         return $response;
     }
+
     public function deleteArticle(Request $request, Response $response, $args)
     {
 
