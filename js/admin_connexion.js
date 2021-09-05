@@ -26,27 +26,33 @@ $(document).ready(function () {
     });
 
 
-    // function connexion() {
-    //     let login = document.getElementById('login_admin').value
-    //     let password = document.getElementById('password_admin').value
-    //     console.log(login)
-    //     console.log(password)
-    //     $.ajax({
-    //         url: 'connexion_admin',
-    //         dateType: 'json',
-    //         type: 'post',
-    //         data: { login: login, password: password }
-
-    //     }).done(function (data) {
-    //         console.log('good')
-    //         console.log(data)
-    //     }).fail(function (doto) {
-    //         console.log('connexion_admin failure')
-    //     })
-    // }
 
 
 });
+function connexion() {
+    let login = document.getElementById('login_admin').value
+    let password = document.getElementById('password_admin').value
+    console.log(login)
+    console.log(password)
+    $.ajax({
+        url: 'getConnexion',
+        dateType: 'json',
+        type: 'post',
+        data: { login: login, password: password }
+
+    }).done(function (data) {
+        console.log('good')
+        console.log(data)
+        $('#connexion_response').append('<p>' + data + '</p>')
+        if (data == "succes") {
+            console.log('bjr')
+            window.location.href = "http://localhost/Project_pool_3/zill-event/admin"
+        }
+
+    }).fail(function (doto) {
+        console.log('connexion_admin failure')
+    })
+}
 
 function inscription() {
     let login = document.getElementById('login_create_admin').value
@@ -78,19 +84,20 @@ function inscription() {
         console.log('inscription_admin failure')
     })
 }
-function modifAdmin(log, pass, id_admin, response) {
+function modifAdmin(log, pass, id_admin, response, confirm_pass) {
     console.log(log, pass)
     let user_name = $('#' + log).val()
     let password = $('#' + pass).val()
     let id = $('#' + id_admin).val();
+    let confirm_password = $('#' + confirm_pass).val()
     $('#' + response).hide()
-    console.log(user_name, password, id, response)
+    console.log(user_name, password, id, confirm_password, response)
 
     $.ajax({
         url: 'modifAdmin',
         dateType: 'json',
         type: 'GET',
-        data: { user_name: user_name, password: password, id: id }
+        data: { user_name: user_name, password: password, id: id, confirm_password: confirm_password }
 
     }).done(function (data) {
         console.log(data)
@@ -119,7 +126,7 @@ function deleteAdmin(id_admin, response) {
     }).done(function (data) {
         console.log(data)
         console.log('good')
-        $('.modifUser[value='+ id_delete +']').hide()
+        $('.modifUser[value=' + id_delete + ']').hide()
         $('#' + response).show()
         $('.affichageReponseFormulaire').empty()
         $('#' + response).append('<p>' + data + '</p>')
@@ -129,19 +136,20 @@ function deleteAdmin(id_admin, response) {
     })
 }
 
-function modifyArticle(title, lien, description, id, response) {
+function modifyArticle(title, lien, description, id, response, lien_ext) {
     let id_val = $('#' + id).val();
     let titre_val = $('#' + title).val();
     let description_val = $('#' + description).val();
     let lien_val = $('#' + lien).val();
+    let lien_externe = $('#' + lien_ext).val();
     $('#' + response).hide()
-    // console.log(id, response)
+    console.log(id, response, lien_externe)
 
     $.ajax({
         url: 'modifyArticle',
         dateType: 'json',
         type: 'GET',
-        data: { id: id_val, titre: titre_val, description: description_val, lien: lien_val }
+        data: { id: id_val, titre: titre_val, description: description_val, lien: lien_val, lien_externe: lien_externe }
 
     }).done(function (data) {
         console.log(data)
@@ -171,7 +179,7 @@ function deleteArticle(id_article, response) {
         $('#' + response).show()
         $('.affichageReponseFormulaire').empty()
         $('#' + response).append('<p>' + data + '</p>')
-        $('.postCardAdmin[value='+ id_delete +']').hide()
+        $('.postCardAdmin[value=' + id_delete + ']').hide()
 
     }).fail(function (doto) {
         console.log('deleteAdmin failure')

@@ -4,6 +4,7 @@ function newPost() {
     let description = $('#description').val()
     let lien = $('#lien').val()
     let type = $('#type_selected option:selected').val()
+    let lien_externe = $('#lien_externe').val()
 
     $('#admin_response_nouvelArticle').hide()
 
@@ -11,7 +12,7 @@ function newPost() {
         url: 'newPost',
         dateType: 'json',
         type: 'post',
-        data: { title : titre, description : description, lien : lien, type : type }
+        data: { title: titre, description: description, lien: lien, type: type, lien_externe: lien_externe }
 
     }).done(function (data) {
         let result = data

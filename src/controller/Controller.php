@@ -61,16 +61,16 @@ class Controller
     public function admin(Request $request, Response $response, $args)
     {
         $model = new \App\model\Post();
-        $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
+
+
         $this->preloadTwig();
-        $allEvent = $model->selectAllByOrder('event', 'id', 'ASC');
-        // var_dump($allEvent);
-        $EventController = new \App\controller\Event();
-        $EventController->newEventPicutre();
-        $allUser = $model->selectAllByOrder('admin', 'id', 'ASC');
-
-
         if (isset($_SESSION['admin'])) {
+            $allPost = $model->selectAllByOrder('post', 'date', 'DESC');
+            $allEvent = $model->selectAllByOrder('event', 'id', 'ASC');
+            // var_dump($allEvent);
+            $EventController = new \App\controller\Event();
+            $EventController->newEventPicutre();
+            $allUser = $model->selectAllByOrder('admin', 'id', 'ASC');
             $login = $_SESSION['admin']['user_name'];
             $response->getBody()->write(
                 $this->twig->render(
@@ -86,10 +86,18 @@ class Controller
         }
         return $response;
     }
+    public function admin_connexion(Request $request, Response $response, $args)
+    {
+        $this->preloadTwig();
 
+        $response->getBody()->write($this->twig->render('admin_connexion.twig.html'));
+        return $response;
+    }
     public function getConnexion(Request $request, Response $response, $args)
     {
         $method = $request->getMethod();
+        $result = "";
+        // $this->preloadTwig();
         if ($method == 'POST') {
 
             $params = (array)$request->getParsedBody();
@@ -98,20 +106,30 @@ class Controller
             $password = $params['password'];
 
             $connexionController = new \App\controller\Admin();
-            $connexionController->connexion($login, $password);
+            $result = $connexionController->connexion($login, $password);
+            if ($result == "succes") {
+                // return $this->redirect('admin'); // GG WP
+                // $response->getBody()->write($this->twig->render('admin.twig.html'));
+                $response->getBody()->write($result);
+                return $response;
+            } elseif ($result = 'error_mdp') {
+
+                $response->getBody()->write($result);
+            } elseif ($result = 'error_log') {
+
+                // $response->getBody()->write($result);
+            } elseif ($result = 'error_char') {
+
+                // $response->getBody()->write($result);
+            }
         } else {
             $login = "";
-            $email = "";
             $password = "";
-            $confirm_password = "";
+            // $response->getBody()->write('input error');
         }
 
-        $this->preloadTwig();
-        $response->getBody()->write($this->twig->render(
-            'admin_connexion.twig.html',
-            ['BASE_PATH' => BASE_PATH, 'method' => $method, 'login' => $login, 'password' => $password, "HTTP_HOST" => HTTP_HOST]
-        ));
-        return $response;
+
+        // return $response;
     }
 
 
@@ -151,6 +169,7 @@ class Controller
 
             $params = (array)$request->getParsedBody();
             //var_dump($_POST);
+            $lien_externe = $this->secure($_POST["lien_externe"]);
             $title = $this->secure($_POST['title']);
             $description = $this->secure($_POST['description']);
             $lien = preg_replace('/(<a\b[^><]*)>/i', '$1 sandbox">', $_POST['lien']);
@@ -158,11 +177,12 @@ class Controller
 
 
             $newPostController = new \App\model\Post();
-            $result = $newPostController->createNewPost($title, $description, $lien, $type);
+            $result = $newPostController->createNewPost($title, $description, $lien, $type, $lien_externe);
         } else {
             $title = "";
             $description = "";
             $lien = "";
+            $lien_externe = "";
         }
         $this->preloadTwig();
         $response->getBody()->write($result);
@@ -223,12 +243,12 @@ class Controller
             // var_dump($params);
             $model = new \App\model\Post();
 
-
+            $lien_externe = $this->secure($_GET['lien_externe']);
             $titre = $this->secure($_GET['titre']);
             $description = $this->secure($_GET['description']);
             $lien = $this->secure($_GET['lien']);
             $id = $this->secure($_GET['id']);
-            $model->updatePost($titre, $description, $lien, $id);
+            $model->updatePost($titre, $description, $lien, $id, $lien_externe);
             // var_dump($titre, $description, $lien);
         } else {
             $titre = "";
@@ -277,33 +297,39 @@ class Controller
             // var_dump($params);
             $model = new \App\model\Admin();
 
-
+            $confirm_password = $this->secure($_GET['confirm_password']);
             $user_name = $this->secure($_GET['user_name']);
             $password = $this->secure($_GET['password']);
             $id = $this->secure($_GET['id']);
             $user_name_len = strlen($user_name);
             $password_len = strlen($password);
             $error = "";
-            if ($user_name_len > 2) {
-                if ($password_len > 4) {
-                    $password = password_hash($password, PASSWORD_BCRYPT);
-                    $model->updateTwoValue('admin', 'user_name', 'password', 'id', $user_name, $password, $id);
-                    $succes = "Les données ont été modifiées avec succès";
-                    $this->preloadTwig();
+            if ($confirm_password == $password) {
 
-                    $response->getBody()->write($succes);
-                    return $response;
+                if ($user_name_len > 2) {
+                    if ($password_len > 4) {
+                        $password = password_hash($password, PASSWORD_BCRYPT);
+                        $model->updateTwoValue('admin', 'user_name', 'password', 'id', $user_name, $password, $id);
+                        $succes = "Les données ont été modifiées avec succès";
+                        $this->preloadTwig();
+
+                        $response->getBody()->write($succes);
+                        return $response;
+                    } else {
+                        $error = '<p>Le mdp doit comporter 4 caractères minimum</p>';
+                    }
                 } else {
-                    $error = '<p>Le mdp doit comporter 4 caractères minimum</p>';
+                    $error =  '<p>Le login doit comporter 2 caractères minimum</p>';
                 }
             } else {
-                $error = $error . '<p>Le login doit comporter 2 caractères minimum</p>';
+                $error =  '<p>Confirmation du mot de passe incorrecte</p>';
             }
         }
         if ($error !== "") {
             $id = "";
             $user_name = "";
             $password = "";
+            $confirm_password = "";
             $this->preloadTwig();
             $response->getBody()->write($error);
             return $response;
@@ -318,11 +344,19 @@ class Controller
 
 
         $model = new \App\model\Admin();
-        $id = $this->secure($_GET['id_delete']);
-        $result = $model->deleteWhere('admin', 'id', $id);
-        $this->preloadTwig();
-        $response->getBody()->write('Admin supprimé !');
-        return $response;
+        $id = $this->secure($_GET['id_delete']); // va devenir un string
+
+        if (($id !== '1') && ($id !== $_SESSION['admin']['id'])) {
+
+            $result = $model->deleteWhere('admin', 'id', $id);
+            $this->preloadTwig();
+            $response->getBody()->write('Admin supprimé !');
+            return $response;
+        } else {
+            $this->preloadTwig();
+            $response->getBody()->write("Vous ne pouvez pas vous supprimer vous même ou supprimer l'admin principal");
+            return $response;
+        }
     }
 
     public function deleteArticle(Request $request, Response $response, $args)

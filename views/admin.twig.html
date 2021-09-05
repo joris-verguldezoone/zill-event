@@ -59,9 +59,12 @@
                 <textarea name='description' required id='description'></textarea>
             </div>
             <div>
-                <label for="lien">Lien de partage</label>
+                <label for="lien">Lien pour l'affichage de l'article</label>
                 <input type='text' name='lien' id='lien' required
                        placeholder="url d'une photo libre de droit ou lien d'intégration youtube">
+                       <label for="lien_externe">Lien externe cliquable</label>
+                <input type='text' name='lien_externe' id='lien_externe' 
+                       placeholder="lien d'un site externe">
             </div>
             <div>
                 <select name="type" id="type_selected">
@@ -88,8 +91,10 @@
             <p>{{ i }}</p>
             <input type="hidden" name="hiddenId" id="hiddenId{{i}}" value="{{ value.id }}">
             <input type="text" name="user_name_modif" id="user_name_modif{{i}}" value='{{ value.user_name }}'>
-            <input type="password" name="password_modif" id="password_modif{{i}}" value="{{ value.password }}">
-            <button onclick="modifAdmin('user_name_modif{{i}}','password_modif{{i}}', 'hiddenId{{i}}', 'admin_response_modif{{i}}')"
+            <label>Mot de passe & confirmation</label>
+            <input type="password" name="password_modif" id="password_modif{{i}}" value="azertyuiopqs">
+            <input type="password" name="confirm_password" id="confirm_password{{i}}" class="margin_confirm_password" value="">
+            <button onclick="modifAdmin('user_name_modif{{i}}','password_modif{{i}}', 'hiddenId{{i}}','admin_response_modif{{i}}','confirm_password{{i}}')"
                     type="button" class='input_changer'
                     name="submitPicture" id="submitPicture{{i}}" value="Changer">Changer
             </button>
@@ -114,8 +119,13 @@
             <input type="text" name="modifyPostLink" id="modifyPostLink{{i}}" placeholder="lien"
                    value="{{ post['lien'] }}">
             <textarea cols="35" name="modifyPostDescription" id="modifyPostDescription{{i}}" row="20">{{ post['description'] }}</textarea>
+           
+            <label for="lien_externe_modif{{i}}">Lien externe cliquable</label>
+
+            <input type='text' name='lien_externe_modif{{i}}' id='lien_externe_modif{{i}}' placeholder="lien d'un site externe">
+            
             <button type="button" class='input_changer' id="input_changer{{i}}"
-                    onclick='modifyArticle("modifyPostTitle{{i}}","modifyPostLink{{i}}","modifyPostDescription{{i}}", "hiddenPostID{{i}}","admin_response_inscription{{i}}")'>
+                    onclick='modifyArticle("modifyPostTitle{{i}}","modifyPostLink{{i}}","modifyPostDescription{{i}}", "hiddenPostID{{i}}","admin_response_inscription{{i}}", "modifyPostTitle{{i}}")'>
                 Modifier
             </button>
             <input type="hidden" name="hiddenPostID" id="hiddenPostID{{i}}" value="{{ post['id'] }}">

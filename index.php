@@ -16,7 +16,7 @@ require_once("src/model/Model.php");
 session_start();
 // session_destroy();
 
-//var_dump($_SESSION);
+// var_dump($_SESSION);
 
 // session_destroy();
 spl_autoload_register(function ($className) {
@@ -46,8 +46,9 @@ $app->get('/event', controller::class . ':event');
 $app->get('/testimonies', controller::class . ':testimonies');
 $app->get('/request_path', controller::class . ':request_path');
 $app->map(['GET', 'POST'], '/admin', controller::class . ':admin');
-$app->map(['GET', 'POST'], '/admin_connexion', controller::class . ':getConnexion');
-// $app->post('/connexion_admin', controller::class . ':connexion_admin');
+$app->map(['GET', 'POST'], '/admin_connexion', controller::class . ':admin_connexion');
+$app->map(['GET', 'POST'], '/getConnexion', controller::class . ':getConnexion');
+$app->post('/connexion_admin', controller::class . ':connexion_admin');
 $app->get('/inscription_admin', controller::class . ':inscription_admin');
 $app->map(["GET", "POST"], '/deconnexion', controller::class . ':deconnexion');
 $app->post('/newPost', controller::class . ':newPost');
