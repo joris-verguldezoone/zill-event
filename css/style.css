@@ -10,7 +10,14 @@
     transition: 0.3s;
     font-family: 'Yantramanav', sans-serif;
 }
+.event_a{
+    font-size: 1.5em;
+}
+#scenographie{
+    font-size: 1.5em;
+    color:rgb(83, 81, 81);
 
+}
 a  {
     color: inherit;
     text-decoration: none;

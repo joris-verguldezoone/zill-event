@@ -10,44 +10,45 @@
     <section class="containerDataArticle">
         <div>
             <p class="titreArticle">{{selectedPost.titre}}</p>
-                <p>{{selectedPost.date}} - <a class="lienExterneArticle" target="blank_" href="{{selectedPost.lien_externe}}">source</a></p>
-           
+            <p>{{selectedPost.date}}</p>
         </div>
         <div>
-            <p class="descriptionArticle">{{selectedPost.description}}</p>
+                <p class="descriptionArticle">{{selectedPost.description}}</p>
+                <a class="lienExterneArticle" href="{{selectedPost.lien}}">lien externe</a>
         </div>
     </section>
-
     <section class="containerImageArticle">
-        {% if selectedPost.type == "photo" %}
-        <img class="imageArticle" src="{{selectedPost.lien}}">
-        {% elseif selectedPost.type == "video" %}
-        {{selectedPost.lien|raw}}
-        {% endif %}
+{% if selectedPost.type == "photo" %}
+
+<img class="imageArticle" src="{{selectedPost.lien}}">
+    {% elseif selectedPost.type == "video" %}
+
+    {{selectedPost.lien|raw}}
+
+    {% endif %}
+
     </section>
-
-
-    <section id="suggestion_section">
-        <p>Voir + </p>
-        <div id="suggestion_sectionDiv">
-            {% for value in suggestion %}
-            <div class="suggestion_div">
-                {% if value.type == "photo" %}
-                <img src="{{value.lien}}" class="suggestion_img">
-                {% elseif value.type == "video" %}
-                {{value.lien|raw}}
-                {% endif %}
-                <a href="{{BASE_PATH}}/article?id={{value.id}}" target="blank" class="overlayPost">{{value.titre}}</a>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-
 </article>
+
+<section id="suggestion_section">
+    {% for value in suggestion %}
+        {% if value.type == "photo" %}
+        <div class="suggestion_div">
+            <img src="{{value.lien}}" class="suggestion_img">
+            <p>{{value.titre}}</p>
+        </div>
+        {% elseif value.type == "video" %}
+        <div class="suggestion_div">
+            {{value.lien|raw}}
+            <p>{{value.titre}}</p>
+        </div>
+        
+        {% endif %}
+        {% endfor %}
+    </section>
 {% endblock %}
 {% block script %}
 
-<script src="{{BASE_PATH}}/js/blog.js"></script>
-<script src="{{BASE_PATH}}/js/article.js"></script>
+<!--<script src="{{BASE_PATH}}/js/blog.js"></script>-->
 
 {% endblock %}

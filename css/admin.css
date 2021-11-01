@@ -28,6 +28,7 @@
     align-items: center;
     border: 1px solid black;
 }
+/* deconnexion button */
 
 
 .navAdmin{
@@ -47,10 +48,6 @@
    color: #fff;
  }
 
- .modifUser {
-     margin-bottom: 10vh;
- }
-
  .postCardAdmin {
      padding: 20px;
      margin-bottom: 20px;
@@ -68,10 +65,49 @@
      display: inline-block;
  }
 
- .affichageReponseFormulaire {
-text-align: center;
-     color: grey;
+/*
+!* input 'changer' *!
+
+.input_changer {background-image: linear-gradient(to right, #606c88 0%, #3f4c6b  51%, #606c88  100%)}
+.input_changer {
+   margin: 10px;
+   padding: 8px 25px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
  }
+
+ .input_changer:hover {
+   background-position: right center; !* change the direction of the change here *!
+   color: #fff;
+   text-decoration: none;
+ }*/
+/* input file */
+/* 
+.input_file {background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3  51%, #8e9eab  100%)}
+.input_file{
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .input_file:hover {
+   background-position: right center;
+   color: #fff;
+   text-decoration: none;
+ } */
 
 /*Phone*/
 @media screen and (max-width: 640px) {
@@ -82,7 +118,4 @@ text-align: center;
     #titleSectionAdmin {
         text-align: center;
     }
-}
-.margin_confirm_password{
-    margin-bottom: 5px;
 }

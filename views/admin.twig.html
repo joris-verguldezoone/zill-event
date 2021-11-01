@@ -18,7 +18,7 @@
         <ul>
             <li class="navAdmin" id="creerAdminButton">Créer un admin</li>
             <li class="navAdmin" id="creerArticleButton">Créer un article</li>
-            <li class="navAdmin" id="modifierAdminButton">Modifier les admins</li>
+            <li class="navAdmin" id="modifierAdminButton">Modifier les utilisateurs</li>
             <li class="navAdmin" id="modifierArticlesButton">Modifier les articles</li>
             <li class="navAdmin" id="modifierImageEventButton">Modifier les images de la page événement</li>
         </ul>
@@ -44,7 +44,7 @@
                 <button type="button" onclick="inscription()" id="submit_create_admin">Inscrire</button>
             </div>
         </form>
-        <div class="affichageReponseFormulaire" id="admin_response_inscription"></div>
+        <div id="admin_response_inscription"></div>
     </section>
 
     <section id="postCreationSection" class="formAdmin adminSection">
@@ -52,59 +52,53 @@
         <form method="GET">
             <div>
                 <label for="titre">Titre</label>
-                <input type='text' name='titre' id='titre' required placeholder='titre du post'>
+                <input type='text' name='titre' id='titre' placeholder='titre du post..'>
             </div>
             <div>
                 <label for="description">Description</label>
-                <textarea name='description' required id='description'></textarea>
+                <textarea name='description' id='description'>Description</textarea>
             </div>
             <div>
-                <label for="lien">Lien pour l'affichage de l'article</label>
-                <input type='text' name='lien' id='lien' required
-                       placeholder="url d'une photo libre de droit ou lien d'intégration youtube">
-                       <label for="lien_externe">Lien externe cliquable</label>
-                <input type='text' name='lien_externe' id='lien_externe' 
-                       placeholder="lien d'un site externe">
+                <label for="lien">Lien de partage</label>
+                <input type='text' name='lien' id='lien' placeholder="url photo libre de droit ou lien d'intégration youtube">
             </div>
             <div>
                 <select name="type" id="type_selected">
-                    <option disabled>--Type--</option>
+                    <option>--choisir--</option>
                     <option value="photo">photo</option>
                     <option value='video'>video</option>
                 </select>
             </div>
-
+            
             <div>
                 <button type='button' onclick="newPost()" name='submitNewPost'>Créer</button>
             </div>
-            <div class="affichageReponseFormulaire" id="admin_response_nouvelArticle"></div>
         </form>
     </section>
 
     <section id="adminModifSection" class="adminSection">
-        <h1>Modifier les admins</h1>
-
+        <h1>Modifier les admin</h1>
+        
         {% set i = 0%}
-        {% for value in allUser %}
-        {% set i = i + 1 %}
-        <form value="{{ value.id }}" class="modifUser" action="" method="GET">
-            <p>{{ i }}</p>
-            <input type="hidden" name="hiddenId" id="hiddenId{{i}}" value="{{ value.id }}">
-            <input type="text" name="user_name_modif" id="user_name_modif{{i}}" value='{{ value.user_name }}'>
-            <label>Mot de passe & confirmation</label>
-            <input type="password" name="password_modif" id="password_modif{{i}}" value="azertyuiopqs">
-            <input type="password" name="confirm_password" id="confirm_password{{i}}" class="margin_confirm_password" value="">
-            <button onclick="modifAdmin('user_name_modif{{i}}','password_modif{{i}}', 'hiddenId{{i}}','admin_response_modif{{i}}','confirm_password{{i}}')"
-                    type="button" class='input_changer'
-                    name="submitPicture" id="submitPicture{{i}}" value="Changer">Changer
-            </button>
-            <button onclick="deleteAdmin('delete_admin{{i}}', 'admin_response_modif{{i}}')" type="button"
-                    class='input_delete'
-                    name="delete_admin" id="delete_admin{{i}}" value="{{ value.id }}">Supprimer
-            </button>
-        </form>
-        <div class="affichageReponseFormulaire" id="admin_response_modif{{i}}"></div>
-        {% endfor %}
+            {% for value in allUser %}
+            {% set i = i + 1 %}
+            {{ i }}
+                <form class="modifUser" action="" method="GET">
+                        <input type="hidden" name="hiddenId" id="hiddenId{{i}}" value="{{ value.id }}">
+                        <input type="text" name="user_name_modif" id="user_name_modif{{i}}" value='{{ value.user_name }}'>
+                        <input type="password" name="password_modif" id="password_modif{{i}}" value="{{ value.password }}">
+                        <button onclick="modifAdmin('user_name_modif{{i}}','password_modif{{i}}', 'hiddenId{{i}}', 'admin_response_modif{{i}}')" type="button" class='input_changer' 
+                            name="submitPicture" id="submitPicture{{i}}" value="Changer">Changer
+                        </button>
+                        <button onclick="deleteAdmin('delete_admin{{i}}', 'admin_response_modif{{i}}')" type="button" class='input_delete' 
+                            name="delete_admin" id="delete_admin{{i}}" value="{{ value.id }}">Supprimer
+                        </button>
+
+                        <div id="admin_response_modif{{i}}"></div>
+                </form>
+
+
+            {% endfor %}
     </section>
 
     <section id="postModifSection" class="adminSection">
@@ -112,29 +106,17 @@
         {% set i = 0%}
         {% for post in allPost %}
         {% set i = i + 1 %}
-        <form value="{{ post['id'] }}" method="GET" class="formAdmin postCardAdmin">
-            <p>Publié le {{ post['date'] }} par @{{post['admin']}}</p>
-            <input type="text" name="modifyPostTitle" id="modifyPostTitle{{i}}" placeholder="titre"
-                   value="{{ post['titre'] }}">
-            <input type="text" name="modifyPostLink" id="modifyPostLink{{i}}" placeholder="lien"
-                   value="{{ post['lien'] }}">
+        <form method="GET" class="formAdmin postCardAdmin">
+            <p>Publié le {{ post['date'] }} par @{{post['id_admin']}}</p>
+            <input type="text" name="modifyPostTitle" id="modifyPostTitle{{i}}" placeholder="titre" value="{{ post['titre'] }}">
+            <input type="text" name="modifyPostLink" id="modifyPostLink{{i}}" placeholder="lien" value="{{ post['lien'] }}">
             <textarea cols="35" name="modifyPostDescription" id="modifyPostDescription{{i}}" row="20">{{ post['description'] }}</textarea>
-           
-            <label for="lien_externe_modif{{i}}">Lien externe cliquable</label>
-
-            <input type='text' name='lien_externe_modif{{i}}' id='lien_externe_modif{{i}}' placeholder="lien d'un site externe">
-            
-            <button type="button" class='input_changer' id="input_changer{{i}}"
-                    onclick='modifyArticle("modifyPostTitle{{i}}","modifyPostLink{{i}}","modifyPostDescription{{i}}", "hiddenPostID{{i}}","admin_response_inscription{{i}}", "modifyPostTitle{{i}}")'>
-                Modifier
-            </button>
+            <button type="button" class='input_changer' id="input_changer{{i}}" onclick='modifyArticle("modifyPostTitle{{i}}","modifyPostLink{{i}}","modifyPostDescription{{i}}", "hiddenPostID{{i}}","admin_response_inscription{{i}}")'>Modifier</button>
             <input type="hidden" name="hiddenPostID" id="hiddenPostID{{i}}" value="{{ post['id'] }}">
-            <button type="button" class="input_suppr" id="input_suppr{{i}}"
-                    onclick='deleteArticle("hiddenPostID{{i}}","admin_response_inscription{{i}}")'>Supprimer
-            </button>
+            <button type="button" class="input_suppr" id="input_suppr{{i}}" onclick='deleteArticle("hiddenPostID{{i}}","admin_response_inscription{{i}}")'>Supprimer</button>
             <input type="hidden" id="hiddenPostID_del" id="hiddenPostID_del{{i}}" value="{{ post['id'] }}">
         </form>
-        <div class="affichageReponseFormulaire" id="admin_response_inscription{{i}}"></div>
+        <div id="admin_response_inscription{{i}}"></div>
 
         {% endfor %}
     </section>
@@ -144,7 +126,7 @@
         <table class="tableResponsive">
             {% for value in allEvent %}
             <tr class="eachEventLine">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" >
                     <td>
                         <label for="picture">{{ value.type }}</label>
                     </td>
@@ -156,9 +138,8 @@
                         <img src="{{ value.path }}" class="small_event_image" alt="event img">
                     </td>
                     <td>
-                        <button type="submit" class='input_changer' name="submitPicture" id="submitPicture"
-                                value="Changer">Changer
-                        </button>
+                        <button type="submit"  class='input_changer' name="submitPicture" id="submitPicture"
+                                value="Changer">Changer</button>
                         <input type="hidden" name="hiddenType" value="{{ value.type }}">
                         <input type="hidden" name="hiddenId" value="{{ value.id }}">
 
@@ -178,5 +159,6 @@
 <!-- <script src="{{BASE_PATH}}/js/admin.js"></script> -->
 <script src="{{BASE_PATH}}/js/admin_connexion.js"></script>
 <script src="{{BASE_PATH}}/js/post.js"></script>
+<script src="{{BASE_PATH}}/js/evenement.js"></script>
 
 {% endblock %}

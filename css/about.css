@@ -2,7 +2,7 @@
 
 #articleAboutMain {
     display: flex;
-    height: 140vh;
+    height: 125vh;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -25,15 +25,19 @@
 #sectionAboutDescription {
     width: 30%;
     text-align: justify;
-    font-size: 120%;
+    font-size: 125%;
     padding-right: 10px;
+    display: flex;
     overflow-y: auto;
+    justify-content: flex-end;
 }
-
+#sectionAboutDescription p{
+    letter-spacing: 1.5px;
+}
 /*BLOC PHOTOS*/
 #articleAboutPhoto {
     height: 70vh;
-    margin-bottom: 10vh;
+    /* margin-bottom: 10vh; */
     position: relative;
 }
 
@@ -44,8 +48,12 @@
 }
 
 
-.aboutPhoto {
-    background: white center url("../media/images/photoComingSoon.png") no-repeat;
+#containerAboutPhotoLarge {
+    background: white center url("../media/images/A_PROPOS_GRANDE.jpg") no-repeat;
+    background-size: cover;
+}
+#containerAboutPhotoSmall {
+    background: white center url("../media/images/A_PROPOS_PETITE.jpg") no-repeat;
     background-size: cover;
 }
 

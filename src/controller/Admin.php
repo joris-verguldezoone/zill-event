@@ -9,6 +9,8 @@ class Admin extends Controller
 {
     public function connexion($login, $password)
     {
+        $login = $login;
+        $password = $password;
         $errorLog = null;
 
         if (!empty($login) && !empty($password)) { // il faut remplir les champs sinon $errorLog
@@ -23,7 +25,7 @@ class Admin extends Controller
             if ($fetch) {
                 $passwordSql = $modelConnexion->passwordVerifySql($login);
 
-                //                var_dump($password, $passwordSql);
+//                var_dump($password, $passwordSql);
                 if (password_verify($password, $passwordSql['password'])) {
                     $_SESSION['connected'] = true;
                     $utilisateur = $modelConnexion->selectAllWhere('admin', 'user_name', $login);
@@ -33,18 +35,18 @@ class Admin extends Controller
                     // $this->login = $utilisateur['user']['login'];
                     // $this->email = $utilisateur['user']['email'];
                     // $this->id_right = $utilisateur['user']['id_right'];
-                    // $this->redirect('admin'); // GG WP
 
                     // Delete session id & user
-                    $errorLog = "succes";
+
+                    $this->redirect('admin'); // GG WP
                 } else {
-                    $errorLog = "error_mdp";
+                    $errorLog = "<p class='alert alert-danger' role='alert'>Mot de passe incorrect</p>";
                 }
             } else {
-                $errorLog = "error_log";
+                $errorLog = "<p class='alert alert-danger' role='alert'>Identifiant incorrect</p>";
             }
         } else {
-            $errorLog = "error_char";
+            $errorLog = "<p class='alert alert-danger' role='alert'>Veuillez entrer des caracteres dans les champs</p>";
         }
         return $errorLog; // on aurait pu mettre un return mais flemme :-) pour un prochain projet
     }

@@ -11,11 +11,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class Event extends Controller
 {
 
-    public function showEvenements()
-    {
-    }
+    // public function showEvenements()
+    // {
+    // }
     public function newEventPicutre()
     {
+        // var_dump('bruh');
         if (isset($_FILES['picture']) and !empty($_FILES['picture']['name'])) {
             $lengthMax = 2000000;
             $validExt = array('jpg', 'jpeg', 'gif', 'png');
@@ -25,13 +26,15 @@ class Event extends Controller
                 $uploadExt = strtolower(substr(strrchr($_FILES['picture']['name'], '.'), 1));
                 if (in_array($uploadExt, $validExt)) {
 
-                    $type_img = $_POST['hiddenType'];
+                    $type_img = strtoupper($_POST['hiddenType']);
                     $id_picture = $_POST['hiddenId'];
-                    $path = 'upload/event/' . $type_img . "." . $uploadExt;
+                    $path = 'media/events/' . $type_img . "." . $uploadExt;
                     // a revoir pendant le transfert et push, 
                     // utiliser var_dump(getcwd()); pour connaitre son PATH 
-                    $result = move_uploaded_file($_FILES['picture']['tmp_name'], $path);
+                    
+                    move_uploaded_file($_FILES['picture']['tmp_name'], $path);
                     var_dump($path);
+                    var_dump($id_picture);
                     // var_dump($uploadExt);
 
                     // var_dump($result);

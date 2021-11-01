@@ -1,36 +1,35 @@
-
 function newPost() {
-    let titre = $('#titre').val()
-    let description = $('#description').val()
-    let lien = $('#lien').val()
-    let type = $('#type_selected option:selected').val()
-    let lien_externe = $('#lien_externe').val()
+    let title = document.getElementById("titre").value
+    let description = document.getElementById('description').value
+    let lien = document.getElementById('lien').value
+    // let photo = document.getElementById('photo').value
+    // let video = document.getElementById('video').value
+    let type = document.getElementById('type_selected').value
+    console.log(title, description, lien)
 
-    $('#admin_response_nouvelArticle').hide()
+    // if (photo !== null) {
+    //     type = photo
+    //     console.log("grrrrrrrrrrrrrrrr")
+    // }
+    // else if (video !== null) {
+    //     type = video
+    //     console.log("nion")
+    // }
+
+    console.log(type)
 
     $.ajax({
         url: 'newPost',
         dateType: 'json',
         type: 'post',
-        data: { title: titre, description: description, lien: lien, type: type, lien_externe: lien_externe }
+        data: { title: title, description: description, lien: lien, type: type }
 
     }).done(function (data) {
-        let result = data
-        console.log('good')
-        $('#admin_response_nouvelArticle').show()
-        $('#admin_response_nouvelArticle').empty()
-        if (data === "success") {
-            result = 'Nouveau post créé avec succès.'
-            $('#titre').val('')
-            $('#description').val('')
-            $('#lien').val('')
-        }
-        $('#admin_response_nouvelArticle').append('<p>' + result + '</p>')
+        console.log(data)
     }).fail(function (doto) {
-        console.log('new Post failure')
+        console.log('newPost failure')
     })
 }
-
 function modifyPost() {
     let titre = document.getElementsByName('modifyPostTitle')[0].value
     let description = document.getElementsByName('modifyPostDescription')[0].value

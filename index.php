@@ -16,7 +16,7 @@ require_once("src/model/Model.php");
 session_start();
 // session_destroy();
 
-// var_dump($_SESSION);
+//var_dump($_SESSION);
 
 // session_destroy();
 spl_autoload_register(function ($className) {
@@ -26,6 +26,8 @@ spl_autoload_register(function ($className) {
         require($filePath);
     }
 });
+
+// var_dump('kz,rlrlgglrrgf');
 
 $app = AppFactory::create();
 
@@ -46,9 +48,8 @@ $app->get('/event', controller::class . ':event');
 $app->get('/testimonies', controller::class . ':testimonies');
 $app->get('/request_path', controller::class . ':request_path');
 $app->map(['GET', 'POST'], '/admin', controller::class . ':admin');
-$app->map(['GET', 'POST'], '/admin_connexion', controller::class . ':admin_connexion');
-$app->map(['GET', 'POST'], '/getConnexion', controller::class . ':getConnexion');
-$app->post('/connexion_admin', controller::class . ':connexion_admin');
+$app->map(['GET', 'POST'], '/admin_connexion', controller::class . ':getConnexion');
+// $app->post('/connexion_admin', controller::class . ':connexion_admin');
 $app->get('/inscription_admin', controller::class . ':inscription_admin');
 $app->map(["GET", "POST"], '/deconnexion', controller::class . ':deconnexion');
 $app->post('/newPost', controller::class . ':newPost');
@@ -58,7 +59,7 @@ $app->get('/modifyArticle', controller::class . ':modifyArticle');
 $app->get('/deletePost', controller::class . ':deletePost');
 $app->get('/modifAdmin', controller::class . ':modifAdmin');
 $app->get('/deleteArticle', controller::class . ':deleteArticle');
-$app->get('/deleteAdmin', controller::class . ':deleteAdmin');
+// $app->post('/insertNewImg', controller::class . ':insertNewImg');
 
 
 $app->run();
