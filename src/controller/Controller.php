@@ -69,10 +69,10 @@ class Controller
         // var_dump($allEvent);
         $EventController = new \App\controller\Event();
 
-        // if (isset($_POST['pictureChanging'])) {
+        if (isset($_POST['hiddenType'])) {
         $pictureName = $_POST['hiddenType'];
         $EventController->newEventPicutre($pictureName);
-        // }
+        }
 
 
         $allUser = $model->selectAllByOrder('admin', 'id', 'ASC');
@@ -129,9 +129,9 @@ class Controller
             $EventController = new \App\controller\Event();
 
             $EventController->newEventPicutre($pictureName);
-            var_dump('coucou');
+            // var_dump('coucou');
         }
-        var_dump(' pas coucou');
+        // var_dump(' pas coucou');
     }
     public function inscription_admin(Request $request, Response $response, $args)
     {

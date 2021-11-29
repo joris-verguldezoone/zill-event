@@ -45,7 +45,7 @@ $app->get('/home', controller::class . ':home');
 $app->get('/about', controller::class . ':about');
 $app->get('/skills', controller::class . ':skills');
 $app->get('/event', controller::class . ':event');
-$app->get('/testimonies', controller::class . ':testimonies');
+// $app->get('/testimonies', controller::class . ':testimonies'); 
 $app->get('/request_path', controller::class . ':request_path');
 $app->map(['GET', 'POST'], '/admin', controller::class . ':admin');
 $app->map(['GET', 'POST'], '/admin_connexion', controller::class . ':getConnexion');

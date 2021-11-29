@@ -32,7 +32,10 @@
     justify-content: flex-end;
 }
 #sectionAboutDescription p{
-    letter-spacing: 1.5px;
+	font-weight:normal;
+    font-family: 'Public Sans', sans-serif;
+    text-indent: 60px;
+    /* text-align: justify; */
 }
 /*BLOC PHOTOS*/
 #articleAboutPhoto {
@@ -46,10 +49,9 @@
     height: 100%;
     flex-direction: row;
 }
-
-
 #containerAboutPhotoLarge {
-    background: white center url("../media/images/A_PROPOS_GRANDE.jpg") no-repeat;
+    /* background: center url("../media/images/A_PROPOS_GRANDE.jpg") no-repeat; */
+    /* background-size: cover; */
     background-size: cover;
 }
 #containerAboutPhotoSmall {
@@ -63,7 +65,7 @@
 }
 
 #containerAboutPhotoLarge {
-    width: 70%;
+    width: 69%;
     height: 100%;
 }
 
@@ -114,38 +116,94 @@
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
 }
+/*
+
+trikeBar {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 0;
+    height: 15px;
+    transition: 0.5s;
+    background-color: black;
+}
+
+
+*/
+
+
+
 
 .white-grad:hover::before {
     transform: rotate(180deg);
 }
 
 
-/*MEDIA QUERIES*/
+
+
+
+@media (min-width: 1401px) and (min-width: 1600px) {
+    #containerAboutPhotoLarge {
+        width: 70%;
+        height: 100%;
+    }
+}
+@media (min-width: 1282px) and (min-width: 1400px) {
+    #containerAboutPhotoLarge {
+        width: 71%;
+        height: 100%;
+    }
+    }
+
+
+
+ 
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    
+    #containerAboutPhotoLarge {
+        width: 71%;
+        height: 100%;
+    }
+    
+  }
+  
+ 
 /*Tablet*/
-@media screen and (max-width: 1024px) {
+@media  (min-width: 841px) and (max-width: 1024px) {
     #articleAboutText {
-        flex-direction: column;
+        flex-direction: row;
     }
     #articleAboutText section {
         /*margin-bottom: 5vh;*/
         width: 100%;
+        flex-direction: column;
     }
 
     #sectionAboutTitle {
-        font-size: 300%;
+        font-size: 200%;
         justify-content: center;
-    }
-
-    #sectionAboutTitle {
         align-self: flex-start;
         justify-self: flex-end;
+    }
+    #containerAboutPhotoLarge {
+        width: 72.5%;
+        height: 100%;
     }
 
 }
 
+
 /*Phone*/
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 840px) {
     #articleAboutPhoto section:nth-child(1) {
+        flex-direction: column;
+    }
+    #sectionAboutTitle {
+        padding-top: 10vh;
+        font-size: 200%;
+     
+    }
+    #articleAboutText {
         flex-direction: column;
     }
 
@@ -168,7 +226,9 @@
         left: 40%;
         top: 40%;
     }
-
+    #sectionAboutDescription {
+        width: 95%;
+    }
     #overlayAbout span {
         border: 3px solid white;
     }

@@ -7,6 +7,8 @@ class Model
     protected $pdo;
     public function __construct() // PDO
     {
+		//joris-verguldezoone_zill-event
+        // $pdo = new \PDO('mysql:host=localhost;dbname=joris-verguldezoone_zill-event;charset=utf8', 'joris', 'huong-may');
         $pdo = new \PDO('mysql:host=localhost;dbname=zill-event;charset=utf8', 'root', '');
 
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);

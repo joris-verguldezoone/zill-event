@@ -16,5 +16,5 @@ $('body').on('click', '#headerNavSection li a', function (e) {
         setTimeout(function () {
         window.location = id;
         }, 400)
-    }, 2000)
+    }, 0750)
 })

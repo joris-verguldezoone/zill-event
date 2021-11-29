@@ -20,8 +20,8 @@ class Event extends Controller
         if (isset($_FILES['picture']) and !empty($_FILES['picture']['name'])) {
             $lengthMax = 2000000;
             $validExt = array('jpg', 'jpeg', 'gif', 'png');
-            var_dump($_FILES);
-            var_dump($_POST);
+            // var_dump($_FILES);
+            // var_dump($_POST);
             if ($_FILES['picture']['size'] <= $lengthMax && $_FILES['picture']['size'] != 0) {
                 $uploadExt = strtolower(substr(strrchr($_FILES['picture']['name'], '.'), 1));
                 if (in_array($uploadExt, $validExt)) {
@@ -33,8 +33,8 @@ class Event extends Controller
                     // utiliser var_dump(getcwd()); pour connaitre son PATH 
                     
                     move_uploaded_file($_FILES['picture']['tmp_name'], $path);
-                    var_dump($path);
-                    var_dump($id_picture);
+                    // var_dump($path);
+                    // var_dump($id_picture);
                     // var_dump($uploadExt);
 
                     // var_dump($result);

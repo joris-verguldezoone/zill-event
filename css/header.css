@@ -9,8 +9,8 @@ header {
 
 /*MENU ICONE HOVER*/
 #icone {
-    left: 20px;
-    top: +200vh;
+    left: 120px;
+    top: +201vh;
     position: fixed;
     z-index: 4;
     display: flex;
@@ -22,8 +22,9 @@ header {
 }
 
 .barre {
-    border: 2px solid black;
+    border: 3px solid black;
     width: 100%;
+	background-color:black;
 }
 
 .barre:nth-child(1) {

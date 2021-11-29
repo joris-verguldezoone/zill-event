@@ -25,6 +25,8 @@ aside span {
     text-align: left;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+line-height: 95px;
+    font-size: 1.8em;
 }
 
 #articleHome {

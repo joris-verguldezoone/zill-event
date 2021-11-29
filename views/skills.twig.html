@@ -1,5 +1,8 @@
 {% extends "template.twig.html" %}
 
+
+
+
 {% block style %}
 <link rel="stylesheet" href="{{BASE_PATH}}/css/skills.css">
 {% endblock %}
@@ -17,47 +20,90 @@
 
 
     <section class="sectionSkill" id="skill1">
-        <div class="imageSkill"></div>
         <div class="titleSkill"><span><h2>ÉVÉNEMENT</h2></span></div>
+        <div class="imageSkill">
+				
+    <!-- le contenu défilant -->
+			  <div class="container_typeJs">
+  <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+  </div>
+
+
+					
+<!-- COCKTAIL <br />
+CÉRÉMONIE DE REMISE
+CONFÉRENCE
+CONGRÈS
+CAPTATION VIDÉO
+HYBRIDE
+DIGITAL
+LANCEMENT PRODUIT
+EXPOSITION
+ASSEMBLEE GENERALE
+OPENING
+INAUGURATION
+CRAZY BIRTHDAY
+CONCERT
+SALON
+DANSE
+SCÉNOGRAPHIE
+SÉMINAIRE
+SOIRÉE D’ENTREPRISE
+SPORTIF
+PARTENAIRE
+VERNISSAGE
+</div> -->
+
     </section>
 
 
     <section class="sectionSkill" id="skill2">
-        <div class="titleSkill"><span><h2>INSTITUTIONNEL</h2></span></div>
         <div class="imageSkill">      
-            <p>L'importance du protocole
-            Il n’existe pas d’événement institutionnel qui ne comporte pas de protocole strict, ce qui doit être vu dans la préséance des personnalités et des symboles, dans les présidences et dans l’emplacement des invités. La clé de l'organisation d'un événement consiste à diffuser une image ou un message spécifique, à générer une conversation entre les invités et dans les médias, qu'ils soient classiques ou sociaux. 
-            Chez Zill’Event, nous nous occupons du protocole, du traitement des assistants et de leur distribution afin que tout se déroule parfaitement.
-            >> Respect du timing & minimisation des imprévus 
-            </p></div>
+            <p class="skill_presentation"> L'importance du protocole <br />
+                Il n’existe pas d’événement institutionnel qui ne comporte pas de protocole strict, ce qui doit être vu dans la préséance des personnalités et des symboles, dans les présidences et dans l’emplacement des invités. La clé de l'organisation d'un événement consiste à diffuser une image ou un message spécifique, à générer une conversation entre les invités et dans les médias, qu'ils soient classiques ou sociaux. 
+                <br /><br />Chez Zill’Event, nous nous occupons du protocole, du traitement des assistants et de leur distribution afin que tout se déroule parfaitement.
+                <br /><br />>> Respect du timing & minimisation des imprévus. 
+            </p>
+        </div>
+        <div class="titleSkill"><span><h2>INSTITUTIONNEL</h2></span></div>
   
     </section>
 
 
     <section class="sectionSkill" id="skill3">
-        <div class="titleSkill"><span><h2>LOGISTIQUE</h2></span></div>
         <div class="imageSkill">    
-    
-           <p> En tant qu’expert en logistique événementielle, Zill' Event veille à ce que l’ensemble des ressources nécessaires soient mises en place pour la réalisation de votre événement : 
-            Vérification du matériel nécessaire & de son bon fonctionnement
-            Achat ou location de tous les éléments utiles à l’événement
-            Installation scénique 
-            Présence au montage et démontage des installations
-            Gestion des autorisations administratives 
-            Stationnement (mise en place d’un parking). 
-            Répétition lumières & sonorisation
-            Installation scénique
-            Restauration client / catering 
+            <div class="titleSkill"><span><h2>LOGISTIQUE</h2></span></div>
+            <div id='logistic_text'>
+                <p class="skill_presentation"> En tant qu’expert en logistique événementielle, Zill' Event veille à ce que <strong>l’ensemble des ressources nécessaires soient mises en place pour la réalisation de votre événement </strong>:</p> 
+            <ul id="skill_list">
+                <li class="skill_presentation">- Vérification du matériel nécessaire & de son bon fonctionnement</li>
+                <li class="skill_presentation">- Achat ou location de tous les éléments utiles à l’événement</li>
+                <li class="skill_presentation">- Installation scénique</li>
+                <li class="skill_presentation">- Présence au montage et démontage des installations</li>
+                <li class="skill_presentation">- Gestion des autorisations administratives</li>
+                <li class="skill_presentation">- Stationnement (mise en place d’un parking).</li>
+                <li class="skill_presentation">- Répétition lumières & sonorisation</li>
+                <li class="skill_presentation">- Installation scénique</li>
+                <li class="skill_presentation">- Restauration client / catering</li>
+            </ul>
+            <p class="skill_presentation">            
+            >> Veille constante au bon déroulement  <br/>
             
-            >> Veille constante au bon déroulement  
+            Vous l’aurez compris, la logistique événementielle regroupe énormément de choses. Elle est indispensable à la réussite de votre événement. C’est donc pour cela qu’il est souvent nécessaire de faire appel à des professionnels. <br/>
             
-            Vous l’aurez compris, la logistique événementielle regroupe énormément de choses. Elle est indispensable à la réussite de votre événement. C’est donc pour cela qu’il est souvent nécessaire de faire appel à des professionnels. 
-            
-            En tant qu’experts, la logistique n’a plus aucun secret. 
-            Budget, lieux, matériels, stationnement ou encore restauration, Zill'Event s’occupent de tout ! 
+            En tant qu’experts, la logistique n’a plus aucun secret.<br/> 
+            Budget, lieux, matériels, stationnement ou encore restauration, Zill'Event s’occupent de tout ! <br/>
             N’attendez plus et donnez vie à vos projets événementiels !   </p>
             </div>
+        </div>
+        </div>
     </section>
 
 </article>
+{% endblock %}
+
+{% block script %}
+
+<script src="{{BASE_PATH}}/js/skills.js"></script>
+
 {% endblock %}
